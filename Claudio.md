@@ -1,4 +1,4 @@
-# Vitacora de claudio
+# bitacora de claudio
 ## proyecto progra
 
 el armando la tiene bien grande
