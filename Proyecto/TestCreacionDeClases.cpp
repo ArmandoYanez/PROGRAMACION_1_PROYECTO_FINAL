@@ -80,6 +80,10 @@ public:
         }
     }
 
+    void SetMes(){
+
+    }
+
 private:
     T Nombre;
     T2 Dia, Mes, Anio;
