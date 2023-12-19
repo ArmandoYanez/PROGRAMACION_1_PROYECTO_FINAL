@@ -81,7 +81,51 @@ public:
     }
 
     void SetMes(){
+        std::cout<<"INGRESA EL MES DE NACIMIENTO CON DOS DIGITOS:"<<std::endl;
+        std::cin>>Mes;
+        if(!TieneDosDigitos(numero:Mes)){
+            std::cout<<"ERROR AL INGRESAR EL MES, EJEMPLO:(09)"<<std::endl;
+            SetMes(); //Usamos la recursividad para ingresar el mes nuevamente
+        }
 
+    }
+
+    void SetAnio(){
+        std::cout<<"INGRESA EL AÑO DE NACIMIENTO CON DOS DIGITOS:"<<std::endl;
+        std::cin>>Anio;
+        if(!TieneDosDigitos(numero:Anio)){
+            std::cout<<"ERROR AL INGRESAR EL Anio, EJEMPLO:(04)"<<std::endl;
+            SetAnio(); //Usamos la recursividad para ingresar el año nuevamente
+        }
+    }
+
+    void SetCargo(){
+        std::cout<<"INGRESE EL CARGOO DEL EMPLEADO"<<std::endl;
+        std::cin>>Cargo;
+        if(!ContieneSoloLetras(Cargo)){
+            std::cout<<"ERROR AL INGRESAR EL CARGO"<<std::endl;
+            SetCargo(); //Usamos la recursividad para ingresar el cargo nuevamente
+        }
+    }
+
+    void SetDireccion(){
+        std::cout<<"INGRESE LA DIRECCION DEL EMPLEADO"<<std::endl;
+        std::cin>>Direccion;
+    }
+
+    void SetRFC(){
+        std::<<cout"INGRESE EL RFC DEL EMPLEADO"<<std::endl;
+        std::cin>>RFC;
+    }
+    void SetNumeroDeCuenta() {
+        std:: << cout
+        "INGRESE EL NUMERO DE CUENTA DEL EMPLEADO" << std::endl;
+        std::cin >> NumeroDeCuenta;
+    }
+
+    void SetNumeroDeSeguroSocial(){
+        std::<<cout"INGRESE EL NUMERO DE SEGURO SOCIAL DEL EMPLEADO"<<std::endl;
+        std::cin>>NumeroDeSeguroSocial;
     }
 
 private:
