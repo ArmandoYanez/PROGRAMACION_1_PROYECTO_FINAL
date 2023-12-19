@@ -32,6 +32,7 @@ bool TieneDosDigitos(int numero) {
 
 //Creacion de 2 templates para su uso dentro de la clase.
 template <typename T, typename T2>
+
 //Creamos Clase Empleado -> Esta es la clase principal de creación.
 class Empleado {
 public:
