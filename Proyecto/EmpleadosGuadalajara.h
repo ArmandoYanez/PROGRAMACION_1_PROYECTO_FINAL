@@ -180,6 +180,7 @@ public:
          EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago) {
     }
 
+    // Se creo el metodo de creacion para la creacion de empleados comunes sin acceso a la plataforma.
     EmpleadoGDL<std::string, int> CreacionEmpleadoGDL(){
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
         std::cout<<"BIENVENIDO JEFE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
