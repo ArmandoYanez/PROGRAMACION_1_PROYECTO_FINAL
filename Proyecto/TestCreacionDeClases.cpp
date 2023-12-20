@@ -8,12 +8,10 @@
 
 int main(){
 
-    EmpleadoGDL<std::string,int> EmpleadoUno;
-    EmpleadoUno.SetNombre();
-    EmpleadoUno.SetDia();
-    EmpleadoUno.SetMes();
-    EmpleadoUno.SetAnio();
-    EmpleadoUno.SetSucursal();
+    std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
+    Jefe Jefe;
+    EmpleadosGDL.push_back(Jefe.CreacionEmpleadoGDL());
+
 
     return 0;
 }

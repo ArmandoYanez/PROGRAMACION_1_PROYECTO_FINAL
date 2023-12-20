@@ -26,9 +26,8 @@ public:
         this->Cargo = (T("N/A"));
         this->Direccion = (T("N/A"));
         this->RFC = (T("N/A"));
-        this->NumeroDeCuenta = (T2(0));
+        this->NumeroDeCuenta = (T("N/A"));
         this->NumeroDeSeguroSocial = (T2(0));
-        this->Sucursal = (T("Guadalajara"));
         this->Sueldo = (0);
         this->EstadoDePago = (T("El pago aún no ha sido efectuado."));
         this->Usuario = (T("N/A"));
@@ -37,7 +36,7 @@ public:
 
     //Constructor explicito.
     EmpleadoGDL(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta,
-                T2 NumeroDeSeguroSocial, T Sucursal, float Sueldo, T EstadoDePago) {
+                T2 NumeroDeSeguroSocial, float Sueldo, T EstadoDePago) {
         this->Nombre = Nombre;
         this->Dia = Dia;
         this->Mes = Mes;
@@ -47,8 +46,7 @@ public:
         this->RFC = RFC;
         this->NumeroDeCuenta = NumeroDeCuenta;
         this->NumeroDeSeguroSocial = NumeroDeSeguroSocial;
-        this->Sucursal = "Guadalajara";
-        this-> Sueldo = Sueldo;
+        this->Sueldo = Sueldo;
         this->EstadoDePago = ("El pago aún no ha sido efectuado.");
         this->Usuario = Usuario;
         this->Contrasena = Contrasena;
@@ -57,7 +55,7 @@ public:
     //Setter para ingresar datos del nombre.
     void SetNombre(){
         std::cout<<"NOMBRE DEL EMPLEADO:"<<std::endl;
-        std::cin>>Nombre;
+        std::getline(std::cin >> std::ws, Nombre); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
         if(!ContieneSoloLetras(Nombre)){
             std::cout<<"ERROR AL INGRESAR EL NOMBRE"<<std::endl;
             SetNombre(); //Usamos la recursividad para ingresar el nombre nuevamente.
@@ -98,7 +96,7 @@ public:
     //Setter para ingresar el cargo del empleado.
     void SetCargo(){
         std::cout<<"INGRESE EL CARGO DEL EMPLEADO"<<std::endl;
-        std::cin>>Cargo;
+        std::getline(std::cin >> std::ws, Cargo); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
         if(!ContieneSoloLetras(Cargo)){
             std::cout<<"ERROR AL INGRESAR EL CARGO"<<std::endl;
             SetCargo(); //Usamos la recursividad para ingresar el cargo nuevamente.
@@ -108,7 +106,7 @@ public:
     //Setter para ingresar la direccion del empleado.
     void SetDireccion(){
         std::cout<<"INGRESE LA DIRECCION DEL EMPLEADO"<<std::endl;
-        std::cin>>Direccion;
+        std::getline(std::cin >> std::ws, Direccion); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
     }
 
     //Setter para ingresar el RFC del empleado.
@@ -122,7 +120,7 @@ public:
     }
 
     //Setter para ingresar el numero de cuenta.
-    void SetNumeroDeCuenta() {
+    void SetNumeroDeCuenta(){
         std::cout<<"INGRESE EL NUMERO DE CUENTA DEL EMPLEADO" << std::endl;
         std::cin >> NumeroDeCuenta;
     }
@@ -133,37 +131,77 @@ public:
         std::cin>>NumeroDeSeguroSocial;
     }
 
-    //Setter para ingresar la scurusal del empleado.
-    void SetSucursal(){
-        std::cout<<"TECLEE LA SUCURSAL DEL EMPLEADO:"<<std::endl<<"* GUADALAJARA"<<std::endl<<"* ZARAGOZA"<<std::endl<<"* CDMX"<<std::endl;
-        std::cin>>Sucursal;
-        if(!validarSucursal(Sucursal)){
-            std::cout<<"SUCURSAL NO DISPONIBLE"<<std::endl;
-            SetSucursal();
-        }
-    }
-
     //Setter para ingrsar el sueldo del empleado.
     void SetSueldo(){
         std::cout<<"INGRESE EL SUELDO DEL EMPLEADO" << std::endl;
         std::cin>>Sueldo;
     }
 
+    //Setter para ingrsar el usuario del empleado.
     void SetUsuario(){
-
+        std::cout<<"INGRESE EL USUARIO DEL EMPLEADO, MAXIMO 10 CARCTERES" << std::endl;
+        std::cin>>Usuario;
+        if(!verificarLongitudContrasenaUsuario(Usuario)){
+            std::cout<<"NOMBRE DE USUARIO NO DISPONIBLE"<<std::endl;
+            SetUsuario();
+        }
     }
 
+    //Setter para ingrsar la contraseña del empleado.
     void SetContrasena(){
-
-
+        std::cout<<"INGRESE LA CONTRASENA DEL EMPLEADO, MAXIMO 10 CARCTERES" << std::endl;
+        std::cin>>Contrasena;
+        if(!verificarLongitudContrasenaUsuario(Contrasena)){
+            std::cout<<"CONTRASENA NO DISPONIBLE"<<std::endl;
+            SetUsuario();
+        }
     }
 
 private:
-    T Nombre, Sucursal, EstadoDePago, Usuario, Contrasena;
+    T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
-    T Cargo, Direccion, RFC;
-    T2 NumeroDeCuenta, NumeroDeSeguroSocial;
+    T Cargo, Direccion, RFC, NumeroDeCuenta;
+    T2 NumeroDeSeguroSocial;
     float Sueldo;
+};
+
+//Creacion de la clase Jefe.
+class Jefe : public EmpleadoGDL<std::string, int> {
+public:
+    // Constructor implicito
+    Jefe() : EmpleadoGDL<std::string, int>() {
+
+    }
+
+    // Constructor explicito
+    Jefe(std::string Nombre, int Dia, int Mes, int Anio, std::string Cargo, std::string Direccion,
+         std::string RFC, int NumeroDeCuenta, int NumeroDeSeguroSocial,
+         float Sueldo, std::string EstadoDePago):
+         EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago) {
+    }
+
+    EmpleadoGDL<std::string, int> CreacionEmpleadoGDL(){
+        EmpleadoGDL<std::string, int> EmpleadoNuevo;
+        std::cout<<"BIENVENIDO JEFE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
+        EmpleadoNuevo.SetNombre();
+        EmpleadoNuevo.SetDia();
+        EmpleadoNuevo.SetMes();
+        EmpleadoNuevo.SetAnio();
+        EmpleadoNuevo.SetDireccion();
+        EmpleadoNuevo.SetRFC();
+        EmpleadoNuevo.SetNumeroDeCuenta();
+        EmpleadoNuevo.SetNumeroDeSeguroSocial();
+        EmpleadoNuevo.SetCargo();
+        EmpleadoNuevo.SetSueldo();
+        EmpleadoNuevo.SetUsuario();
+        EmpleadoNuevo.SetContrasena();
+        std::cout<<"USUARIO REGISTRADO EXITOSAMENTE."<<std::endl;
+        return EmpleadoNuevo;
+    }
+
+
+private:
+
 };
 
 #endif //PROYECTO_EMPLEADOSGUADALAJARA_H

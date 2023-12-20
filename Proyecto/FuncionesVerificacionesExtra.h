@@ -16,7 +16,7 @@
 // Función para verificar si se pone un numero dentro de un string.
 bool ContieneSoloLetras(std::string texto) {
     for (char caracter : texto) {
-        if (!std::isalpha(caracter)) {
+        if (!std::isalpha(caracter) && !std::isspace(caracter)) {
             return false; // Si se encuentra un carácter que no es una letra, devuelve falso.
         }
     }
@@ -49,5 +49,11 @@ bool validarSucursal(std::string Sucursal) {
         return false;
     }
 }
+
+//Verificacion de longitud de contraseña y usuario.
+bool verificarLongitudContrasenaUsuario(const std::string& cadena) {
+    return cadena.length() <= 10;
+}
+
 
 #endif //PROYECTO_FUNCIONESVERIFICACIONESEXTRA_H
