@@ -158,6 +158,64 @@ public:
     }
 
     //Getters para retornar Nombre
+    T getNombre(){
+        return this -> Nombre;
+    }
+
+    //Getters para retornar Dia
+    T2 getDia(){
+        return this -> Dia;
+    }
+
+    //Getters para retornar Mes
+    T2 getMes(){
+        return this -> Mes;
+    }
+
+    //Getters para retornar Anio
+    T2 getAnio(){
+        return this -> Anio;
+    }
+
+    //Getters para retornar Cargo
+    T getCargo(){
+        return this -> Cargo;
+    }
+
+    //Getters para retornar Dirrecion
+    T getDirreccion(){
+        return this -> Direccion;
+    }
+
+    //Getters para retornar RFC
+    T getRFC(){
+        return this -> RFC;
+    }
+
+    //Getters para retornar NUMERO DE CUENTA
+    T getNumeroDeCuneta(){
+        return this -> NumeroDeCuenta;
+    }
+
+    //Getters para retornar Numero de seguro social
+    T2 getNumeroDeSeguroSocial(){
+        return this -> NumeroDeSeguroSocial;
+    }
+
+    //Getters para retornar Sueldo
+    T getSueldo(){
+        return this -> Sueldo;
+    }
+
+    //Getters para retornar Usuario
+    T getUsuario(){
+        return this -> Usuario;
+    }
+
+    //Getters para retornar Contrasena
+    T getContrasena(){
+        return this -> Contrasena;
+    }
 
 
 private:
