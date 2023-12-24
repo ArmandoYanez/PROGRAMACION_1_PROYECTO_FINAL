@@ -157,66 +157,65 @@ public:
         }
     }
 
-    //Getters para retornar Nombre
+    //Getters para retornar Nombre.
     T getNombre(){
         return this -> Nombre;
     }
 
-    //Getters para retornar Dia
+    //Getters para retornar Dia.
     T2 getDia(){
         return this -> Dia;
     }
 
-    //Getters para retornar Mes
+    //Getters para retornar Mes.
     T2 getMes(){
         return this -> Mes;
     }
 
-    //Getters para retornar Anio
+    //Getters para retornar Anio.
     T2 getAnio(){
         return this -> Anio;
     }
 
-    //Getters para retornar Cargo
+    //Getters para retornar Cargo.
     T getCargo(){
         return this -> Cargo;
     }
 
-    //Getters para retornar Dirrecion
+    //Getters para retornar Dirrecion.
     T getDirreccion(){
         return this -> Direccion;
     }
 
-    //Getters para retornar RFC
+    //Getters para retornar RFC.
     T getRFC(){
         return this -> RFC;
     }
 
-    //Getters para retornar NUMERO DE CUENTA
+    //Getters para retornar NUMERO DE CUENTA.
     T getNumeroDeCuneta(){
         return this -> NumeroDeCuenta;
     }
 
-    //Getters para retornar Numero de seguro social
+    //Getters para retornar Numero de seguro social.
     T2 getNumeroDeSeguroSocial(){
         return this -> NumeroDeSeguroSocial;
     }
 
-    //Getters para retornar Sueldo
+    //Getters para retornar Sueldo.
     T getSueldo(){
         return this -> Sueldo;
     }
 
-    //Getters para retornar Usuario
+    //Getters para retornar Usuario.
     T getUsuario(){
         return this -> Usuario;
     }
 
-    //Getters para retornar Contrasena
+    //Getters para retornar Contrasena.
     T getContrasena(){
         return this -> Contrasena;
     }
-
 
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
@@ -265,8 +264,31 @@ public:
     }
 
     // Se crea metodo para busqueda y edicion de empleados.
-    EmpleadoGDL<std::string, int>EditarDatos(EmpleadoGDL<std::string, int> EmpleadoBusqueda) {
+    std::vector<EmpleadoGDL<std::string ,int>>EditarDatos(std::vector<EmpleadoGDL<std::string ,int>> EmpleadoBusqueda){
+        std::string Usuario;
+        std::cout<<"INGRESE EL USUARIO DEL EMPLEADO A EDITAR:"<<std::endl;
+        std::cin>> Usuario;
 
+        for (size_t i = 0; i < EmpleadoBusqueda.size(); ++i) {
+            std::cout << EmpleadoBusqueda[i].getUsuario() << std::endl;
+            if (EmpleadoBusqueda[i].getUsuario() == Usuario){
+                std::cout<<"ACTUALIZA LOS DATOS DE " << EmpleadoBusqueda[i].getNombre() << std::endl;
+                EmpleadoBusqueda[i].SetNombre();
+                EmpleadoBusqueda[i].SetDia();
+                EmpleadoBusqueda[i].SetMes();
+                EmpleadoBusqueda[i].SetAnio();
+                EmpleadoBusqueda[i].SetDireccion();
+                EmpleadoBusqueda[i].SetRFC();
+                EmpleadoBusqueda[i].SetNumeroDeCuenta();
+                EmpleadoBusqueda[i].SetNumeroDeSeguroSocial();
+                EmpleadoBusqueda[i].SetCargo();
+                EmpleadoBusqueda[i].SetSueldo();
+                EmpleadoBusqueda[i].SetUsuario();
+                EmpleadoBusqueda[i].SetContrasena();
+            }
+        }
+
+        return EmpleadoBusqueda;
     }
 
 private:

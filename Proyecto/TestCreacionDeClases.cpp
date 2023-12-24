@@ -11,6 +11,7 @@ int main(){
     std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
     GerenteRecursosHumanosGDL<std::string ,int> GerenteRecursosHumanos;
     EmpleadosGDL.push_back(GerenteRecursosHumanos.CreacionEmpleadoGDL());
+    EmpleadosGDL = GerenteRecursosHumanos.EditarDatos(EmpleadosGDL);
 
 
     return 0;
