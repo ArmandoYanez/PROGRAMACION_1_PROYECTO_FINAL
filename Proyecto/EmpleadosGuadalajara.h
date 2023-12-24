@@ -168,6 +168,9 @@ private:
     float Sueldo;
 };
 
+//Creacion de 2 templates para su uso dentro de la clase.
+template <typename T, typename T2>
+
 //Creacion de la clase Jefe.
 class GerenteRecursosHumanosGDL : public EmpleadoGDL<std::string, int> {
 public:
@@ -177,9 +180,8 @@ public:
     }
 
     // Constructor explicito
-    GerenteRecursosHumanosGDL(std::string Nombre, int Dia, int Mes, int Anio, std::string Cargo, std::string Direccion,
-         std::string RFC, int NumeroDeCuenta, int NumeroDeSeguroSocial,
-         float Sueldo, std::string EstadoDePago):
+    GerenteRecursosHumanosGDL(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta, T2 NumeroDeSeguroSocial,
+         float Sueldo, T EstadoDePago):
          EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago) {
     }
 
@@ -210,10 +212,10 @@ public:
     }
 
 private:
-    std::string Nombre, EstadoDePago, Usuario, Contrasena;
-    int Dia, Mes, Anio;
-    std::string Cargo, Direccion, RFC, NumeroDeCuenta;
-    int NumeroDeSeguroSocial;
+    T Nombre, EstadoDePago, Usuario, Contrasena;
+    T2 Dia, Mes, Anio;
+    T Cargo, Direccion, RFC, NumeroDeCuenta;
+    T2 NumeroDeSeguroSocial;
     float Sueldo;
 };
 

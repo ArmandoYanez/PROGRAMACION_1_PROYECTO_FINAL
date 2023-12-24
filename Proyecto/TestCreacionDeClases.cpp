@@ -9,7 +9,7 @@
 int main(){
 
     std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
-    GerenteRecursosHumanosGDL GerenteRecursosHumanos;
+    GerenteRecursosHumanosGDL<std::string ,int> GerenteRecursosHumanos;
     EmpleadosGDL.push_back(GerenteRecursosHumanos.CreacionEmpleadoGDL());
 
 
