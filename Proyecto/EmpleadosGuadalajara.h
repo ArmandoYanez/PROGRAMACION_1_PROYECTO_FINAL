@@ -157,6 +157,9 @@ public:
         }
     }
 
+    //Getters para retornar Nombre
+
+
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
@@ -166,15 +169,15 @@ private:
 };
 
 //Creacion de la clase Jefe.
-class Jefe : public EmpleadoGDL<std::string, int> {
+class GerenteRecursosHumanosGDL : public EmpleadoGDL<std::string, int> {
 public:
     // Constructor implicito
-    Jefe() : EmpleadoGDL<std::string, int>() {
+    GerenteRecursosHumanosGDL() : EmpleadoGDL<std::string, int>() {
 
     }
 
     // Constructor explicito
-    Jefe(std::string Nombre, int Dia, int Mes, int Anio, std::string Cargo, std::string Direccion,
+    GerenteRecursosHumanosGDL(std::string Nombre, int Dia, int Mes, int Anio, std::string Cargo, std::string Direccion,
          std::string RFC, int NumeroDeCuenta, int NumeroDeSeguroSocial,
          float Sueldo, std::string EstadoDePago):
          EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago) {
@@ -184,6 +187,7 @@ public:
     EmpleadoGDL<std::string, int> CreacionEmpleadoGDL(){
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
         std::cout<<"BIENVENIDO JEFE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
+        //Funciones para crear un nuevo usuario.
         EmpleadoNuevo.SetNombre();
         EmpleadoNuevo.SetDia();
         EmpleadoNuevo.SetMes();
@@ -200,9 +204,17 @@ public:
         return EmpleadoNuevo;
     }
 
+    // Se crea metodo para busqueda y edicion de empleados.
+    EmpleadoGDL<std::string, int>EditarDatos(EmpleadoGDL<std::string, int> EmpleadoBusqueda) {
+
+    }
 
 private:
-
+    std::string Nombre, EstadoDePago, Usuario, Contrasena;
+    int Dia, Mes, Anio;
+    std::string Cargo, Direccion, RFC, NumeroDeCuenta;
+    int NumeroDeSeguroSocial;
+    float Sueldo;
 };
 
 #endif //PROYECTO_EMPLEADOSGUADALAJARA_H
