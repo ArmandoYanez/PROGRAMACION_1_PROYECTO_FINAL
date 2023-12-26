@@ -32,11 +32,12 @@ public:
         this->EstadoDePago = (T("El pago aún no ha sido efectuado."));
         this->Usuario = (T("N/A"));
         this->Contrasena = (T("N/A"));
+        this->Sucursal = (T("N/A"));
     }
 
     //Constructor explicito.
     EmpleadoGDL(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta,
-                T2 NumeroDeSeguroSocial, float Sueldo, T EstadoDePago) {
+                T2 NumeroDeSeguroSocial, float Sueldo, T EstadoDePago, T Sucursal) {
         this->Nombre = Nombre;
         this->Dia = Dia;
         this->Mes = Mes;
@@ -50,6 +51,7 @@ public:
         this->EstadoDePago = ("El pago aún no ha sido efectuado.");
         this->Usuario = Usuario;
         this->Contrasena = Contrasena;
+        this->Sucursal = Sucursal;
     }
 
     //Setter para ingresar datos del nombre.
@@ -109,13 +111,28 @@ public:
         std::getline(std::cin >> std::ws, Direccion); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
     }
 
+    //Setter para ingresar la sucursal del empleado si el jefe lo quiere contratar.
+    void SetSucursal(){
+        std::cout<<"INGRESE LA SUCURSAL DEL EMPLEADO"<<std::endl<<"GUADALAJARA"<<std::endl<<"GUANAJUATO"<<std::endl<<"CDMX"<<std::endl;
+        std::cin>>Sucursal;
+        if(!validarSucursal(Sucursal)){
+            std::cout<<"SUCURSAL NO EXISTENTE, INGRESA NUEVAMENTE:"<<std::endl;
+            SetSucursal();//Usamos la recursividad para ingresar la sucursal correctamente.
+        }
+    }
+
+    //Setter para ingresar sucursal en caso de que un gerente quiera crear.
+    void SetSucursalGerente(T SucursalIngreso){
+        Sucursal = SucursalIngreso;
+    }
+
     //Setter para ingresar el RFC del empleado.
     void SetRFC(){
         std::cout<<"INGRESE EL RFC DEL EMPLEADO"<<std::endl;
         std::cin>>RFC;
         if(!validarLongitudRFC(RFC)){
             std::cout<<"ERROR AL INGRESAR EL RFC"<<std::endl;
-            SetRFC(); //Usamos la recursividad para ingresar el cargo RFC
+            SetRFC(); //Usamos la recursividad para ingresar el cargo RFC.
         }
     }
 
@@ -155,6 +172,25 @@ public:
             std::cout<<"CONTRASENA NO DISPONIBLE"<<std::endl;
             SetUsuario();
         }
+    }
+
+    //Setter conjunto para creacion de empleado.
+    void SetCrear(T SucursalRegistro){
+        SetNombre();
+        SetDia();
+        SetMes();
+        SetAnio();
+        SetDireccion();
+        SetSucursalGerente(SucursalRegistro);
+        SetRFC();
+        SetNumeroDeCuenta();
+        SetNumeroDeSeguroSocial();
+        SetCargo();
+        SetSueldo();
+        SetUsuario();
+        SetContrasena();
+        std::cout<<Sucursal;
+        std::cout<<Nombre;
     }
 
     //Getters para retornar Nombre.
@@ -217,10 +253,17 @@ public:
         return this -> Contrasena;
     }
 
+    //Getters para retornar sucursal.
+    T getSucursal(){
+        return this -> Sucursal;
+    }
+
+
+
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
-    T Cargo, Direccion, RFC, NumeroDeCuenta;
+    T Cargo, Direccion, RFC, NumeroDeCuenta, Sucursal;
     T2 NumeroDeSeguroSocial;
     float Sueldo;
 };
@@ -229,72 +272,56 @@ private:
 template <typename T, typename T2>
 
 //Creacion de la clase Jefe.
-class GerenteRecursosHumanosGDL : public EmpleadoGDL<std::string, int> {
+class GerenteRecursosHumanos : public EmpleadoGDL<std::string, int> {
 public:
     // Constructor implicito
-    GerenteRecursosHumanosGDL() : EmpleadoGDL<std::string, int>() {
+    GerenteRecursosHumanos() : EmpleadoGDL<std::string, int>() {
 
     }
 
     // Constructor explicito
-    GerenteRecursosHumanosGDL(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta, T2 NumeroDeSeguroSocial,
-         float Sueldo, T EstadoDePago):
-         EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago) {
+    GerenteRecursosHumanos(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta, T2 NumeroDeSeguroSocial,
+         float Sueldo, T EstadoDePago, T Sucursal):
+         EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
     }
 
     // Se creo el metodo de creacion para la creacion de empleados comunes sin acceso a la plataforma.
     EmpleadoGDL<std::string, int> CreacionEmpleadoGDL(){
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
-        std::cout<<"BIENVENIDO JEFE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
-        //Funciones para crear un nuevo usuario.
-        EmpleadoNuevo.SetNombre();
-        EmpleadoNuevo.SetDia();
-        EmpleadoNuevo.SetMes();
-        EmpleadoNuevo.SetAnio();
-        EmpleadoNuevo.SetDireccion();
-        EmpleadoNuevo.SetRFC();
-        EmpleadoNuevo.SetNumeroDeCuenta();
-        EmpleadoNuevo.SetNumeroDeSeguroSocial();
-        EmpleadoNuevo.SetCargo();
-        EmpleadoNuevo.SetSueldo();
-        EmpleadoNuevo.SetUsuario();
-        EmpleadoNuevo.SetContrasena();
+        std::cout<<"BIENVENIDO GERENTE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
+
+        //Funcion para crear un nuevo usuario.
+        EmpleadoNuevo.SetCrear(Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
         std::cout<<"USUARIO REGISTRADO EXITOSAMENTE."<<std::endl;
+
         return EmpleadoNuevo;
     }
 
     // Se crea metodo para busqueda y edicion de empleados.
     std::vector<EmpleadoGDL<std::string ,int>>EditarDatos(std::vector<EmpleadoGDL<std::string ,int>> EmpleadoBusqueda){
+        //Se crea cadena para guardar el nombre que el usuario quiera ingresar.
         std::string Usuario;
         std::cout<<"INGRESE EL USUARIO DEL EMPLEADO A EDITAR:"<<std::endl;
         std::cin>> Usuario;
 
         for (size_t i = 0; i < EmpleadoBusqueda.size(); ++i) {
-            std::cout << EmpleadoBusqueda[i].getUsuario() << std::endl;
             if (EmpleadoBusqueda[i].getUsuario() == Usuario){
-                std::cout<<"ACTUALIZA LOS DATOS DE " << EmpleadoBusqueda[i].getNombre() << std::endl;
-                EmpleadoBusqueda[i].SetNombre();
-                EmpleadoBusqueda[i].SetDia();
-                EmpleadoBusqueda[i].SetMes();
-                EmpleadoBusqueda[i].SetAnio();
-                EmpleadoBusqueda[i].SetDireccion();
-                EmpleadoBusqueda[i].SetRFC();
-                EmpleadoBusqueda[i].SetNumeroDeCuenta();
-                EmpleadoBusqueda[i].SetNumeroDeSeguroSocial();
-                EmpleadoBusqueda[i].SetCargo();
-                EmpleadoBusqueda[i].SetSueldo();
-                EmpleadoBusqueda[i].SetUsuario();
-                EmpleadoBusqueda[i].SetContrasena();
+                if(Sucursal == EmpleadoBusqueda[i].getSucursal()){
+                    std::cout<<"ACTUALIZA LOS DATOS DE " << EmpleadoBusqueda[i].getNombre() << std::endl;
+                    EmpleadoBusqueda[i].SetCrear(Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
+                    std::cout<<"DATOS EDITADOS CORRECTAMENTE" << std::endl;
+                }else{
+                    std::cout << "USUARIO NO DISPONIBLE" << std::endl;
+                }
             }
         }
-
         return EmpleadoBusqueda;
     }
 
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
-    T Cargo, Direccion, RFC, NumeroDeCuenta;
+    T Cargo, Direccion, RFC, NumeroDeCuenta, Sucursal;
     T2 NumeroDeSeguroSocial;
     float Sueldo;
 };

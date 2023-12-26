@@ -42,6 +42,7 @@ bool validarLongitudRFC(std::string rfc) {
 
 //Verificacion de sucursales disponibles.
 bool validarSucursal(std::string Sucursal) {
+    // Se utiliza el transforma para convertir en minusculas el texto ingresado y comparar
     std::transform(Sucursal.begin(), Sucursal.end(), Sucursal.begin(), ::tolower);
     if (Sucursal == "guadalajara" || Sucursal == "zaragoza" || Sucursal == "cdmx"){
         return true;

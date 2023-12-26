@@ -9,7 +9,8 @@
 int main(){
 
     std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
-    GerenteRecursosHumanosGDL<std::string ,int> GerenteRecursosHumanos;
+    GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
+    GerenteRecursosHumanos.SetCrear("CDMX");
     EmpleadosGDL.push_back(GerenteRecursosHumanos.CreacionEmpleadoGDL());
     EmpleadosGDL = GerenteRecursosHumanos.EditarDatos(EmpleadosGDL);
 
