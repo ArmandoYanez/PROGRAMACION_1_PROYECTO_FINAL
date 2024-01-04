@@ -174,25 +174,6 @@ public:
         }
     }
 
-    //Setter conjunto para creacion de empleado.
-    void SetCrear(T SucursalRegistro){
-        SetNombre();
-        SetDia();
-        SetMes();
-        SetAnio();
-        SetDireccion();
-        SetSucursalGerente(SucursalRegistro);
-        SetRFC();
-        SetNumeroDeCuenta();
-        SetNumeroDeSeguroSocial();
-        SetCargo();
-        SetSueldo();
-        SetUsuario();
-        SetContrasena();
-        std::cout<<Sucursal;
-        std::cout<<Nombre;
-    }
-
     //Getters para retornar Nombre.
     T getNombre(){
         return this -> Nombre;
@@ -257,6 +238,35 @@ public:
     T getSucursal(){
         return this -> Sucursal;
     }
+
+    //Funcion para guardar datos a bd.
+     void CargarDatosBaseDeDatos(){
+        std::ifstream file("BaseDeDatos.csv");
+        if (!file.good()) {
+            std::ofstream outfile("BaseDeDatos.csv");
+            outfile << getNombre(), getDia(), getMes(), getCargo(), getDirreccion(), getRFC(), getNumeroDeCuneta(), getNumeroDeSeguroSocial(), getSueldo(), getUsuario(), getContrasena(), getSucursal(),"\n";
+            outfile.close();
+        }
+    }
+
+    //Setter conjunto para creacion de empleado.
+    void SetCrear(T SucursalRegistro){
+        SetNombre();
+        SetDia();
+        SetMes();
+        SetAnio();
+        SetDireccion();
+        SetSucursalGerente(SucursalRegistro);
+        SetRFC();
+        SetNumeroDeCuenta();
+        SetNumeroDeSeguroSocial();
+        SetCargo();
+        SetSueldo();
+        SetUsuario();
+        SetContrasena();
+        //CargarDatosBaseDeDatos();
+    }
+
 
 
 private:
