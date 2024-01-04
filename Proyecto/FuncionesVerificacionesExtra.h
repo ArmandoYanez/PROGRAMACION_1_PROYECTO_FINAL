@@ -8,10 +8,24 @@
 #include <iostream>
 #include <string>
 
+#include <fstream> //Para la creacion de archivos csv.
+
 #include <algorithm> // Se utiliza la función transform.
 
 //Libreria para comprobar si dentro de un string se ponen numeros.
 #include <cctype>
+
+// Función para crear archivo csv
+
+void GenerarArchivo(){
+    // Crear archivo csv
+        std::ifstream file("BaseDeDatos.csv");
+        if (!file.good()) {
+            std::ofstream outfile("BaseDeDatos.csv");
+            outfile << "Nombre,Dia,Mes,Anio,Cargo,Direccion,RFC,NumeroDeCuenta,NumeroSeguroSocial,Sueldo,EstadoDePago,Usuario,Contrasena,sucursal\n";
+            outfile.close();
+    }
+}
 
 // Función para verificar si se pone un numero dentro de un string.
 bool ContieneSoloLetras(std::string texto) {

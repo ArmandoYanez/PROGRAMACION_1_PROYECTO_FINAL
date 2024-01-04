@@ -259,7 +259,6 @@ public:
     }
 
 
-
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
