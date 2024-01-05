@@ -222,7 +222,7 @@ public:
     }
 
     //Getters para retornar Sueldo.
-    T getSueldo(){
+    float getSueldo(){
         return this -> Sueldo;
     }
 
@@ -246,10 +246,9 @@ public:
         std::stringstream DatosListos; // Crear un stringstream
 
         // Construir la cadena de texto en el stringstream
-        //Poliza << std::endlM
+        DatosListos << getNombre() << "," << getDia() << "," << getMes() << "," << getAnio() << "," << getCargo() << "," << getDirreccion() << "," << getRFC() << "," << getNumeroDeCuneta() << "," << getNumeroDeSeguroSocial() << "," << getSueldo() << "," << getUsuario() << "," << getContrasena() << "," << getSucursal() << "\n";
 
-
-
+        return DatosListos.str(); // Obtener la cadena de texto del stringstream
     }
 
     //Funcion para guardar datos a bd.
@@ -257,7 +256,7 @@ public:
         std::ifstream file("BaseDeDatos.csv");
         if (!file.good()) {
             std::ofstream outfile("BaseDeDatos.csv");
-            outfile << getNombre(), getDia(), getMes(), getCargo(), getDirreccion(), getRFC(), getNumeroDeCuneta(), getNumeroDeSeguroSocial(), getSueldo(), getUsuario(), getContrasena(), getSucursal(),"\n";
+            outfile << getDatosListos();
             outfile.close();
         }
     }
