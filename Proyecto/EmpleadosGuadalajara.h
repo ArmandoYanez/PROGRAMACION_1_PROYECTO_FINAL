@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 
+#include <sstream>
+
 //Libreria con funciones extra de verificacion y otras funciones extra.
 #include "FuncionesVerificacionesExtra.h"
 
@@ -239,6 +241,17 @@ public:
         return this -> Sucursal;
     }
 
+    //Metodo para obtener ordenadamente todos los datos listos para ser guardados
+    T getDatosListos(){
+        std::stringstream DatosListos; // Crear un stringstream
+
+        // Construir la cadena de texto en el stringstream
+        //Poliza << std::endlM
+
+
+
+    }
+
     //Funcion para guardar datos a bd.
      void CargarDatosBaseDeDatos(){
         std::ifstream file("BaseDeDatos.csv");
@@ -264,7 +277,7 @@ public:
         SetSueldo();
         SetUsuario();
         SetContrasena();
-        //CargarDatosBaseDeDatos();
+        CargarDatosBaseDeDatos();
     }
 
 
