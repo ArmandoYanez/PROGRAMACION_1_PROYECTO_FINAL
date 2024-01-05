@@ -253,11 +253,13 @@ public:
 
     //Funcion para guardar datos a bd.
      void CargarDatosBaseDeDatos(){
-        std::ifstream file("BaseDeDatos.csv");
-        if (!file.good()) {
-            std::ofstream outfile("BaseDeDatos.csv");
+        std::ofstream outfile("BaseDeDatos.csv", std::ios::app); // Modo de apertura para agregar datos al final del archivo
+
+        if (outfile.is_open()) {
             outfile << getDatosListos();
             outfile.close();
+        } else {
+            std::cout << "No se pudo abrir el archivo BaseDeDatos.csv" << std::endl;
         }
     }
 
