@@ -12,9 +12,7 @@ int main(){
     GenerarArchivo();
     std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
     GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
-    GerenteRecursosHumanos.SetCrear("CDMX");
-    EmpleadosGDL.push_back(GerenteRecursosHumanos.CreacionEmpleadoGDL());
-    EmpleadosGDL = GerenteRecursosHumanos.EditarDatos(EmpleadosGDL);
+    GerenteRecursosHumanos.EditarDatos();
 
 
     return 0;

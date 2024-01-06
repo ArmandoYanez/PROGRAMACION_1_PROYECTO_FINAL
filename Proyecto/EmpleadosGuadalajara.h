@@ -321,24 +321,64 @@ public:
     }
 
     // Se crea metodo para busqueda y edicion de empleados.
-    std::vector<EmpleadoGDL<std::string ,int>>EditarDatos(std::vector<EmpleadoGDL<std::string ,int>> EmpleadoBusqueda){
-        //Se crea cadena para guardar el nombre que el usuario quiera ingresar.
+    void EditarDatos(){
+        // Se crea cadena para guardar el nombre que el usuario quiera ingresar.
         std::string Usuario;
-        std::cout<<"INGRESE EL USUARIO DEL EMPLEADO A EDITAR:"<<std::endl;
-        std::cin>> Usuario;
+        std::cout << "INGRESE EL USUARIO DEL EMPLEADO A EDITAR:" << std::endl;
+        std::cin >> Usuario;
 
-        for (size_t i = 0; i < EmpleadoBusqueda.size(); ++i) {
-            if (EmpleadoBusqueda[i].getUsuario() == Usuario){
-                if(Sucursal == EmpleadoBusqueda[i].getSucursal()){
-                    std::cout<<"ACTUALIZA LOS DATOS DE " << EmpleadoBusqueda[i].getNombre() << std::endl;
-                    EmpleadoBusqueda[i].SetCrear(Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
-                    std::cout<<"DATOS EDITADOS CORRECTAMENTE" << std::endl;
-                }else{
-                    std::cout << "USUARIO NO DISPONIBLE" << std::endl;
+        std::string nombreArchivo = "BaseDeDatos.csv";
+        std::ifstream archivoEntrada(nombreArchivo);
+        if (!archivoEntrada) {
+            std::cout << "No se pudo abrir el archivo: " << nombreArchivo << std::endl;
+            return; // Salir de la función si no se pudo abrir el archivo
+        }
+
+        std::vector<std::string> lineasArchivo;
+        std::string linea;
+        while (std::getline(archivoEntrada, linea)) {
+            std::stringstream ss(linea);
+            std::string campo;
+            std::vector<std::string> campos;
+
+            while (std::getline(ss, campo, ',')) {
+                campos.push_back(campo);
+            }
+
+            // Comprobación si el nombre de usuario está en la columna correspondiente (por ejemplo, en la posición 1)
+            if (campos.size() > 1 && campos[10] == Usuario) {
+                std::cout << "El usuario se encuentra en la linea: " << linea << std::endl;
+                // Realizar aquí las modificaciones en los datos según sea necesario
+
+                // Por ejemplo, puedes modificar el nombre del usuario en la línea actual:
+                // campos[1] = nuevoNombreUsuario;
+
+                // Luego, reconstruye la línea con los campos modificados
+                std::stringstream nuevaLinea;
+                for (const auto& campo : campos) {
+                    nuevaLinea << campo << ",";
                 }
+                std::string nuevaLineaStr = nuevaLinea.str();
+                nuevaLineaStr.pop_back(); // Eliminar la última coma
+
+                lineasArchivo.push_back(nuevaLineaStr);
+            } else {
+                lineasArchivo.push_back(linea);
             }
         }
-        return EmpleadoBusqueda;
+        archivoEntrada.close();
+
+        // Ahora, escribe las líneas modificadas de nuevo al archivo
+        std::ofstream archivoSalida(nombreArchivo);
+        if (!archivoSalida) {
+            std::cout << "No se pudo abrir el archivo de salida: " << nombreArchivo << std::endl;
+            return;
+        }
+
+        for (const auto& linea : lineasArchivo) {
+            archivoSalida << linea << std::endl;
+        }
+        archivoSalida.close();
     }
 
 private:
