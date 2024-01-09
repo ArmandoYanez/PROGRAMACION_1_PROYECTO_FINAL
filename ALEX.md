@@ -3,3 +3,5 @@
 ## PROYECTO PARCIAL 4 | SISTEMA DE INVENTARIOS
 
 <span style="color:#d41089">ENCARGADO DE CREACION DE SISTEMA DE INVENTARIOS</span>
+
+Dia 08/01/2024: Ayude a actualizar el Login
