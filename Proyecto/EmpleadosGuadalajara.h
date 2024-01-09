@@ -309,7 +309,7 @@ public:
     }
 
     // Se creo el metodo de creacion para la creacion de empleados comunes sin acceso a la plataforma.
-    EmpleadoGDL<std::string, int> CreacionEmpleadoGDL(){
+    EmpleadoGDL<std::string, int> CreacionEmpleado(){
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
         std::cout<<"BIENVENIDO GERENTE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
 
