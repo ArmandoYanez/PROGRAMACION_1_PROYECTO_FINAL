@@ -20,7 +20,7 @@ std::string Login() {
 
     bool verificacion = false; //cree dato para ver si se repetira el proceso del login
 
-    while (!verificacion) { //while que hace que se repita el proceso del login
+    while (!verificacion) { //while verificador del login
         std::cout << "BIENVENIDO AL SISTEMA, INGRESA TU NOMBRE DE USUARIO Y CONTRASENA PARA CONTINUAR" << std::endl
                   << "USUARIO:" << std::endl;
         std::cin >> Usuario;
