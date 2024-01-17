@@ -96,10 +96,13 @@ public:
     void SetCargo(){
         std::cout<<"INGRESE EL CARGO DEL EMPLEADO"<<std::endl;
         std::getline(std::cin >> std::ws, Cargo); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
+
         if(!ContieneSoloLetras(Cargo)){
             std::cout<<"ERROR AL INGRESAR EL CARGO"<<std::endl;
             SetCargo(); //Usamos la recursividad para ingresar el cargo nuevamente.
         }
+        //Funcion para cambiar a mayusculas.
+        convertirAMayusculas(Cargo) = Cargo;
     }
 
     //Setter para ingresar la direccion del empleado.

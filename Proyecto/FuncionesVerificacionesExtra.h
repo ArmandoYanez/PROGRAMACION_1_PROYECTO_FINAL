@@ -70,5 +70,15 @@ bool verificarLongitudContrasenaUsuario(const std::string& cadena) {
     return cadena.length() <= 10;
 }
 
+//Conversion a mayusculas de cualquier cadena.
+std::string convertirAMayusculas(const std::string& str) {
+    std::string resultado;
+
+    for (char c : str) {
+        resultado += std::toupper(c);
+    }
+
+    return resultado;
+}
 
 #endif //PROYECTO_FUNCIONESVERIFICACIONESEXTRA_H

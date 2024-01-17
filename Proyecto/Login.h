@@ -10,6 +10,9 @@
 
 #include <sstream>
 
+//libreria con los menus
+#include "Menus.h"
+
 //Libreria con funciones extra de verificacion y otras funciones extra.
 #include "FuncionesVerificacionesExtra.h"
 
@@ -44,6 +47,8 @@ void Login() {
         if (campos.size() > 1 && campos[10] == Usuario && campos[11] == Contrasena) {
             Comparacion(campos[4]);
             break;
+        }else{
+            Login();
         }
     }
     archivoEntrada.close();
