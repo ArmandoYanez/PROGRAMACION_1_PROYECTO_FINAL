@@ -82,7 +82,7 @@ std::string Login() {
         if (Puesto == "Empleado") {
             std::cout << "bienvenido empleado" << std::endl;
             std::cout << "que decea hacer?" << std::endl;
-            std::cout << "1. horario del empleado" << std::endl
+            std::cout << "1. horario del empleado" << std::endl;
             std::cout << "2. dias de descanso" << std::endl;
             std::cout << "3. salario del empleado " << std::endl;
             std::cin >> decea;
