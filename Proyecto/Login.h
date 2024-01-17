@@ -12,7 +12,7 @@
 
 //Libreria con funciones extra de verificacion y otras funciones extra.
 #include "FuncionesVerificacionesExtra.h"
-
+#include "Menus.h"
 //Funcion principal login.
 void Login() {
     //Ingreso de usuario y contraseña
