@@ -13,10 +13,11 @@ void Comparacion(std::string puesto) {
 
     //Funcion para gerentes generales.
     if (puesto == "GERENTE GENERAL") {
-        std::cout << "BIENVENIDO GERENTE, ¿QUE DESEA HACER?" << std::endl;
+        std::cout << "BIENVENIDO GERENTE, QUE DESEA HACER?" << std::endl;
         std::cout << "1. CREAR USUARIO" << std::endl;
         std::cout << "2. ELIMINAR USUARIO" << std::endl;
         std::cout << "3. EDITAR USUARIO" << std::endl;
+        std::cout << "4. SALIR" << std::endl;
         std::cin >> Eleccion;
 
         switch (Eleccion) {
@@ -31,6 +32,10 @@ void Comparacion(std::string puesto) {
             case 3:
                 std::cout << "3. EDITAR USUARIO" << std::endl;
                 // Agrega la lógica para editar usuario aquí.
+                break;
+            case 4:
+                std::cout << "SESION CERRADA" << std::endl;
+                return;
                 break;
             default:
                 std::cout << "OPCION NO VALIDA" << std::endl;

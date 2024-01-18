@@ -20,9 +20,9 @@
 void Login() {
     //Ingreso de usuario y contraseña
     std::string Usuario, Contrasena, Puesto;
-    std::cout << "BIENVENIDO AL SISTEMA, INGRESA TU NOMBRE DE USUARIO Y CONTRASENA PARA CONTINUAR" << std::endl << "USUARIO:" << std::endl;
+    std::cout << "BIENVENIDO AL SISTEMA, INGRESA TU NOMBRE DE USUARIO Y CONTRASENA PARA CONTINUAR" << std::endl << "USUARIO:";
     std::cin >> Usuario;
-    std::cout << "CONTRASENA:" << std::endl;
+    std::cout << "CONTRASENA:";
     std::cin >> Contrasena;
 
     std::string nombreArchivo = "BaseDeDatos.csv";
@@ -46,12 +46,17 @@ void Login() {
         // Comprobación si el nombre de usuario y contraseña coinciden
         if (campos.size() > 1 && campos[10] == Usuario && campos[11] == Contrasena) {
             Comparacion(campos[4]);
-            break;
-        }else{
             Login();
+            encontrado = true;
+            break;
         }
     }
     archivoEntrada.close();
+
+    if (!encontrado) {
+        std::cout << "Nombre de usuario o contraseña incorrectos. Inténtalo de nuevo." << std::endl;
+        Login();
+    }
 
 }
 #endif //PROGRAMACION1_PROYECTOPARCIAL4_LOGIN_H
