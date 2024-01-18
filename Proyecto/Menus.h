@@ -5,11 +5,13 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include "FuncionesParaEmpleados.h"
 
 //Funcion para comprar el puesto de los empleados.
-void Comparacion(std::string puesto) {
+void Comparacion(std::string puesto, std::string planta) {
 
     int Eleccion;
+    GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
 
     //Funcion para gerentes generales.
     if (puesto == "GERENTE GENERAL") {
@@ -22,8 +24,8 @@ void Comparacion(std::string puesto) {
 
         switch (Eleccion) {
             case 1:
-                std::cout << "1. CREAR USUARIO" << std::endl;
                 // Agrega la lógica para crear usuario aquí.
+                GerenteRecursosHumanos.CreacionEmpleado();
                 break;
             case 2:
                 std::cout << "2. ELIMINAR USUARIO" << std::endl;
@@ -48,25 +50,21 @@ void Comparacion(std::string puesto) {
         std::cout << "BIENVENIDO EMPLEADO" << std::endl;
         std::cout << "QUE DESEAS HACER" << std::endl;
         std::cout << "1. HORARIO DE EMPLEADO" << std::endl;
-        std::cout << "2. DIAS DE DESCANSO " << std::endl;
-        std::cout << "3. SALARIO DEL EMPLEADO " << std::endl;
-        std::cout << "4. SALIR" << std::endl;
+        std::cout << "2. SALARIO DEL EMPLEADO " << std::endl;
+        std::cout << "3. SALIR" << std::endl;
         std::cin >> Eleccion;
 
         switch (Eleccion) {
             case 1:
                 std::cout << "1. HORARIO DEL EMPLEADO" << std::endl;
                 // Agrega la lógica para mostrar horario del empleado aquí.
+                ComparacionHorario(planta);
                 break;
             case 2:
                 std::cout << "2. DIAS DE DESCANSO " << std::endl;
                 // Agrega la lógica para mostrar días de descanso aquí.
                 break;
             case 3:
-                std::cout << "3. SALARIO DEL EMPLEADO " << std::endl;
-                // Agrega la lógica para mostrar salario del empleado aquí.
-                break;
-            case 4:
                 std::cout << "SESION CERRADA" << std::endl;
                 return;
                 break;
@@ -82,7 +80,7 @@ void Comparacion(std::string puesto) {
         std::cout << "1. cambiar de ubicación de empleado" << std::endl;
         std::cout << "2. modificar el horario de un empleado" << std::endl;
         std::cout << "3. modificar el salario del empleado" << std::endl;
-        std::cout << "4. SALIR" << std::endl;
+        std::cout <<"4. SALIR" << std::endl;
         std::cin >> Eleccion;
 
         switch (Eleccion) {
@@ -97,10 +95,6 @@ void Comparacion(std::string puesto) {
             case 3:
                 std::cout << "3. modificar el salario del empleado" << std::endl;
                 // Agrega la lógica para modificar salario de un empleado aquí.
-                break;
-            case 4:
-                std::cout << "SESION CERRADA" << std::endl;
-                return;
                 break;
             default:
                 std::cout << "Opción no válida." << std::endl;

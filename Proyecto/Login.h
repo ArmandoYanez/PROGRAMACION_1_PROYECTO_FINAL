@@ -45,7 +45,7 @@ void Login() {
 
         // Comprobación si el nombre de usuario y contraseña coinciden
         if (campos.size() > 1 && campos[10] == Usuario && campos[11] == Contrasena) {
-            Comparacion(campos[4]);
+            Comparacion(campos[4], campos[12]);
             Login();
             encontrado = true;
             break;

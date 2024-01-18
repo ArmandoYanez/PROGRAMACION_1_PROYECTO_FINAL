@@ -17,6 +17,5 @@ int main(){
     GerenteRecursosHumanos.CreacionEmpleado();
     GerenteRecursosHumanos.EditarDatos();
 
-
     return 0;
 }
