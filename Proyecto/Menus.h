@@ -50,6 +50,7 @@ void Comparacion(std::string puesto) {
         std::cout << "1. HORARIO DE EMPLEADO" << std::endl;
         std::cout << "2. DIAS DE DESCANSO " << std::endl;
         std::cout << "3. SALARIO DEL EMPLEADO " << std::endl;
+        std::cout << "4. SALIR" << std::endl;
         std::cin >> Eleccion;
 
         switch (Eleccion) {
@@ -65,6 +66,10 @@ void Comparacion(std::string puesto) {
                 std::cout << "3. SALARIO DEL EMPLEADO " << std::endl;
                 // Agrega la lógica para mostrar salario del empleado aquí.
                 break;
+            case 4:
+                std::cout << "SESION CERRADA" << std::endl;
+                return;
+                break;
             default:
                 std::cout << "OPCION NO VALIDA" << std::endl;
                 break;
@@ -77,6 +82,7 @@ void Comparacion(std::string puesto) {
         std::cout << "1. cambiar de ubicación de empleado" << std::endl;
         std::cout << "2. modificar el horario de un empleado" << std::endl;
         std::cout << "3. modificar el salario del empleado" << std::endl;
+        std::cout << "4. SALIR" << std::endl;
         std::cin >> Eleccion;
 
         switch (Eleccion) {
@@ -91,6 +97,10 @@ void Comparacion(std::string puesto) {
             case 3:
                 std::cout << "3. modificar el salario del empleado" << std::endl;
                 // Agrega la lógica para modificar salario de un empleado aquí.
+                break;
+            case 4:
+                std::cout << "SESION CERRADA" << std::endl;
+                return;
                 break;
             default:
                 std::cout << "Opción no válida." << std::endl;
