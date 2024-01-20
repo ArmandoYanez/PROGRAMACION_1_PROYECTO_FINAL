@@ -381,7 +381,7 @@ public:
         archivoSalida.close();
     }
 
-    void BorrarEmpleado (){
+    void BorrarEmpleado () {
         // Se crea cadena para guardar el nombre que el usuario quiera borrar.
         std::string Usuario;
         std::cout << "INGRESE EL USUARIO DEL EMPLEADO A BORRAR:" << std::endl;
@@ -422,16 +422,11 @@ public:
                 return;
             }
 
-            for (const auto& linea : lineasArchivo) {
+            for (const auto &linea: lineasArchivo) {
                 archivoSalida << linea << std::endl;
             }
             archivoSalida.close();
         }
-
-
-
-
-
     }
 
 private:
