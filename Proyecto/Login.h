@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 
+
 #include <sstream>
 
 //libreria con los menus
@@ -18,6 +19,12 @@
 
 //Funcion principal login.
 void Login() {
+    //Verificamos si el archivo esta vacio.
+    if(VerificarArchivoVacio() == 0){
+        Jefe<std::string ,int> Jefe;
+        Jefe.SetCrearJefe();
+    }
+
     //Ingreso de usuario y contraseña
     std::string Usuario, Contrasena, Puesto;
     std::cout << "BIENVENIDO AL SISTEMA, INGRESA TU NOMBRE DE USUARIO Y CONTRASENA PARA CONTINUAR" << std::endl << "USUARIO:";

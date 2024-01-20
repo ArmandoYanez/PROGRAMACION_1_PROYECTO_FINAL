@@ -13,7 +13,7 @@
 void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
     int Eleccion;
-    GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
+    GerenteGeneral<std::string ,int> GerenteGeneral;
 
     //Funcion para gerentes generales.
     if (puesto == "GERENTE GENERAL") {
@@ -28,12 +28,12 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
         switch (Eleccion) {
             case 1:
                 // Agrega la lógica para crear usuario aquí.
-                GerenteRecursosHumanos.CreacionEmpleado();
+                GerenteGeneral.CreacionEmpleado();
                 LineasEnBlanco();
                 break;
             case 2:
                 // Agrega la lógica para eliminar usuario aquí.
-                GerenteRecursosHumanos.BorrarEmpleado();
+                GerenteGeneral.BorrarEmpleado();
                 LineasEnBlanco();
                 break;
             case 3:

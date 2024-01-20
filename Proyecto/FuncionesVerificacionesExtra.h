@@ -15,6 +15,8 @@
 //Libreria para comprobar si dentro de un string se ponen numeros.
 #include <cctype>
 
+
+
 // Función para crear archivo csv
 void GenerarArchivo(){
     // Crear archivo csv
@@ -23,24 +25,24 @@ void GenerarArchivo(){
             std::ofstream outfile("BaseDeDatos.csv");
             outfile << "Nombre,Dia,Mes,Anio,Cargo,Direccion,RFC,NumeroDeCuenta,NumeroSeguroSocial,Sueldo,EstadoDePago,Usuario,Contrasena,sucursal\n";
             outfile.close();
-    }
+        }
 }
 
-//Funcion en caso de que este vacio el archivo csv
-void VerificarArchivoVacio() {
+//Funcion en caso de que este vacio el archivo csv.
+bool VerificarArchivoVacio() {
     std::string nombreArchivo = "BaseDeDatos.csv";
     std::ifstream archivoEntrada(nombreArchivo);
 
     if (!archivoEntrada) {
         std::cout << "No se pudo abrir el archivo: " << nombreArchivo << std::endl;
-        return;
+        return 0;
     }
 
     // Verificar si el archivo está vacío
     if (archivoEntrada.peek() == std::ifstream::traits_type::eof()) {
-        std::cout << "El archivo está vacío." << std::endl;
+        return 1;
     } else {
-        std::cout << "El archivo no está vacío." << std::endl;
+        return 0;
     }
 
     archivoEntrada.close();

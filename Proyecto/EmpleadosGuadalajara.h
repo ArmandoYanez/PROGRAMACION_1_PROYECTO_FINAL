@@ -107,6 +107,11 @@ public:
         }
     }
 
+    //Setter para ingresar el cargo del predeterminado a los gerentes.
+    void SetCargoGerenteGeneral(){
+        Cargo = "GERENTE GENERAL";
+    }
+
     //Setter para ingresar la direccion del empleado.
     void SetDireccion(){
         std::cout<<"INGRESE LA DIRECCION DEL EMPLEADO"<<std::endl;
@@ -115,11 +120,23 @@ public:
 
     //Setter para ingresar la sucursal del empleado si el jefe lo quiere contratar.
     void SetSucursal(){
-        std::cout<<"INGRESE LA SUCURSAL DEL EMPLEADO"<<std::endl<<"GUADALAJARA"<<std::endl<<"GUANAJUATO"<<std::endl<<"CDMX"<<std::endl;
-        std::cin>>Sucursal;
-        if(!validarSucursal(Sucursal)){
-            std::cout<<"SUCURSAL NO EXISTENTE, INGRESA NUEVAMENTE:"<<std::endl;
-            SetSucursal();//Usamos la recursividad para ingresar la sucursal correctamente.
+        int eleccion;
+        std::cout<<"INGRESE LA SUCURSAL DEL EMPLEADO"<<std::endl<<"1- GUADALAJARA"<<std::endl<<"2- GUANAJUATO"<<std::endl<<"3- CDMX"<<std::endl;
+        std::cin>>eleccion;
+        //Segun el numero elegido se va iguala una cadena de texto a la variable.
+        switch (eleccion) {
+            case 1:
+                Sucursal = "GDL";
+                break;
+            case 2:
+                Sucursal = "GTO";
+                break;
+            case 3:
+                Sucursal = "CDMX";
+                break;
+            default:
+                std::cout<<"SUCURSAL NO DISPONIBLE, SELECCIONA UNA NUEVAMENTE"<<std::endl;
+                SetSucursal(); //Usamos la recursividad para ingresar la sucursal correctamente.
         }
     }
 
@@ -281,6 +298,25 @@ public:
         CargarDatosBaseDeDatos();
     }
 
+    //Setter conjunto para creacion de empleado.
+    void SetCrearGerente(T SucursalRegistro){
+        SetNombre();
+        SetDia();
+        SetMes();
+        SetAnio();
+        SetDireccion();
+        SetSucursal();
+        SetRFC();
+        SetNumeroDeCuenta();
+        SetNumeroDeSeguroSocial();
+        SetCargoGerenteGeneral();
+        SetSueldo();
+        SetUsuario();
+        SetContrasena();
+        CargarDatosBaseDeDatos();
+    }
+
+
 
 
 private:
@@ -294,34 +330,37 @@ private:
 //Creacion de 2 templates para su uso dentro de la clase.
 template <typename T, typename T2>
 
-//Creacion de la clase Jefe.
-class GerenteRecursosHumanos : public EmpleadoGDL<std::string, int> {
+//Creacion de la clase Gerente.
+class GerenteGeneral : public EmpleadoGDL<std::string, int> {
 public:
     // Constructor implicito
-    GerenteRecursosHumanos() : EmpleadoGDL<std::string, int>() {
+    GerenteGeneral() : EmpleadoGDL<std::string, int>() {
 
     }
 
     // Constructor explicito
-    GerenteRecursosHumanos(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta, T2 NumeroDeSeguroSocial,
-         float Sueldo, T EstadoDePago, T Sucursal):
-         EmpleadoGDL<std::string, int>(Nombre, Dia,Mes, Anio, Cargo, Direccion,RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
+    GerenteGeneral(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta,
+                   T2 NumeroDeSeguroSocial,
+                   float Sueldo, T EstadoDePago, T Sucursal) :
+            EmpleadoGDL<std::string, int>(Nombre, Dia, Mes, Anio, Cargo, Direccion, RFC, NumeroDeCuenta,
+                                          NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
     }
 
     // Se creo el metodo de creacion para la creacion de empleados comunes sin acceso a la plataforma.
-    EmpleadoGDL<std::string, int> CreacionEmpleado(){
+    EmpleadoGDL<std::string, int> CreacionEmpleado() {
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
-        std::cout<<"BIENVENIDO GERENTE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:"<<std::endl;
+        std::cout << "BIENVENIDO GERENTE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:" << std::endl;
 
         //Funcion para crear un nuevo usuario.
-        EmpleadoNuevo.SetCrear(Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
-        std::cout<<"USUARIO REGISTRADO EXITOSAMENTE."<<std::endl;
+        EmpleadoNuevo.SetCrear(
+                Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
+        std::cout << "USUARIO REGISTRADO EXITOSAMENTE." << std::endl;
 
         return EmpleadoNuevo;
     }
 
     // Se crea metodo para busqueda y edicion de empleados.
-    void EditarDatos(){
+    void EditarDatos() {
         // Se crea cadena para guardar el nombre que el usuario quiera ingresar.
         std::string Usuario;
         std::cout << "INGRESE EL USUARIO DEL EMPLEADO A EDITAR:" << std::endl;
@@ -355,7 +394,7 @@ public:
 
                 // Luego, reconstruye la línea con los campos modificados
                 std::stringstream nuevaLinea;
-                for (const auto& campo : campos) {
+                for (const auto &campo: campos) {
                     nuevaLinea << campo << ",";
                 }
                 std::string nuevaLineaStr = nuevaLinea.str();
@@ -375,13 +414,13 @@ public:
             return;
         }
 
-        for (const auto& linea : lineasArchivo) {
+        for (const auto &linea: lineasArchivo) {
             archivoSalida << linea << std::endl;
         }
         archivoSalida.close();
     }
 
-    void BorrarEmpleado () {
+    void BorrarEmpleado() {
         // Se crea cadena para guardar el nombre que el usuario quiera borrar.
         std::string Usuario;
         std::cout << "INGRESE EL USUARIO DEL EMPLEADO A BORRAR:" << std::endl;
@@ -422,10 +461,64 @@ public:
             return;
         }
 
-        for (const auto& linea : lineasArchivo) {
+        for (const auto &linea: lineasArchivo) {
             archivoSalida << linea << std::endl;
         }
         archivoSalida.close();
+    }
+
+private:
+    T Nombre, EstadoDePago, Usuario, Contrasena;
+    T2 Dia, Mes, Anio;
+    T Cargo, Direccion, RFC, NumeroDeCuenta, Sucursal;
+    T2 NumeroDeSeguroSocial;
+    float Sueldo;
+};
+
+template<typename T, typename T2>
+//Creacion de la calse jefe
+class Jefe : public EmpleadoGDL<std::string, int> {
+public:
+    // Constructor implicito
+    Jefe() : EmpleadoGDL<std::string, int>() {
+
+    }
+
+    // Constructor explicito
+    Jefe(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta, T2 NumeroDeSeguroSocial,
+         float Sueldo, T EstadoDePago, T Sucursal):
+            EmpleadoGDL<std::string, int>(Nombre, Dia, Mes, Anio, Cargo, Direccion, RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
+    }
+
+    //Creacion de un jefe en caso de encontrar el archivo vacio.
+    void SetCrearJefe(){
+        std::cout<<"NO HAY USUSARIOS REGISTRADOS, COMIENZA CON EL REGISTRO DEL JEFE:"<<std::endl;
+        SetNombre();
+        SetDia();
+        SetMes();
+        SetAnio();
+        SetDireccion();
+        SetRFC();
+        SetNumeroDeCuenta();
+        SetNumeroDeSeguroSocial();
+        SetCargoGerenteGeneral();
+        SetSueldo();
+        SetUsuario();
+        SetContrasena();
+        CargarDatosBaseDeDatos();
+    }
+
+    //Setter conjunto para creacion de empleado.
+    GerenteGeneral<std::string, int> CreacionGerente() {
+        GerenteGeneral<std::string, int> EmpleadoNuevo;
+        std::cout << "BIENVENIDO JEFE, PARA CREAR UN GERENTE COMPLETE LA SIGUIENTE INFORMACION:" << std::endl;
+
+        //Funcion para crear un nuevo usuario.
+        EmpleadoNuevo.SetCrearGerente(
+                Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
+        std::cout << "GERENTE REGISTRADO EXITOSAMENTE." << std::endl;
+
+        return EmpleadoNuevo;
     }
 
 private:
