@@ -112,6 +112,11 @@ public:
         Cargo = "GERENTE GENERAL";
     }
 
+    //Setter para ingresar el cargo del predeterminado del jefe.
+    void SetCargoJefe(){
+        Cargo = "JEFE";
+    }
+
     //Setter para ingresar la direccion del empleado.
     void SetDireccion(){
         std::cout<<"INGRESE LA DIRECCION DEL EMPLEADO"<<std::endl;
@@ -490,6 +495,7 @@ public:
             EmpleadoGDL<std::string, int>(Nombre, Dia, Mes, Anio, Cargo, Direccion, RFC, NumeroDeCuenta, NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
     }
 
+
     //Creacion de un jefe en caso de encontrar el archivo vacio.
     void SetCrearJefe(){
         std::cout<<"NO HAY USUSARIOS REGISTRADOS, COMIENZA CON EL REGISTRO DEL JEFE:"<<std::endl;
@@ -501,7 +507,7 @@ public:
         SetRFC();
         SetNumeroDeCuenta();
         SetNumeroDeSeguroSocial();
-        SetCargoGerenteGeneral();
+        SetCargoJefe();
         SetSueldo();
         SetUsuario();
         SetContrasena();

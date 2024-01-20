@@ -23,7 +23,6 @@ void GenerarArchivo(){
         std::ifstream file("BaseDeDatos.csv");
         if (!file.good()) {
             std::ofstream outfile("BaseDeDatos.csv");
-            outfile << "Nombre,Dia,Mes,Anio,Cargo,Direccion,RFC,NumeroDeCuenta,NumeroSeguroSocial,Sueldo,EstadoDePago,Usuario,Contrasena,sucursal\n";
             outfile.close();
         }
 }
@@ -32,20 +31,7 @@ void GenerarArchivo(){
 bool VerificarArchivoVacio() {
     std::string nombreArchivo = "BaseDeDatos.csv";
     std::ifstream archivoEntrada(nombreArchivo);
-
-    if (!archivoEntrada) {
-        std::cout << "No se pudo abrir el archivo: " << nombreArchivo << std::endl;
-        return 0;
-    }
-
-    // Verificar si el archivo está vacío
-    if (archivoEntrada.peek() == std::ifstream::traits_type::eof()) {
-        return 1;
-    } else {
-        return 0;
-    }
-
-    archivoEntrada.close();
+    return archivoEntrada.peek() == std::ifstream::traits_type::eof();
 }
 
 // Función para verificar si se pone un numero dentro de un string.

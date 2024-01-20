@@ -20,7 +20,7 @@
 //Funcion principal login.
 void Login() {
     //Verificamos si el archivo esta vacio.
-    if(VerificarArchivoVacio() == 0){
+    if(VerificarArchivoVacio()){
         Jefe<std::string ,int> Jefe;
         Jefe.SetCrearJefe();
     }
