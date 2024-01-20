@@ -31,15 +31,24 @@ public:
     //Uso de set para poder agregar al inventario
     void SetNombre (){
         std::cout << "QUE DESEA AGREGAR AL INVENTARIO?" << std::endl;
+
         std::cin >> Nombre;
     }
     void SetCantidad (){
         std::cout << "QUE CANTIDAD DE " << Nombre << " DESEA AGREGAR" << std::endl;
+
         std::cin >> Cantidad;
     }
     void SetPlanta (){
         std::cout << "EN QUE PLANTA DESEA AGREGARLOS" << std::endl;
+
         std::cin >> Planta;
+    }
+    void SetId (){
+        std::cout << "EL ID DEL PRODUCTO/S ES " << Id << std::endl;
+        for (X i = 0 ; i = Cantidad ; ++i) {
+            std::cout << "EL ID DE SU PRODUCTO ES " << Id << std::endl;
+        }
     }
 
     //Uso de get para poder rellenar el inventario
