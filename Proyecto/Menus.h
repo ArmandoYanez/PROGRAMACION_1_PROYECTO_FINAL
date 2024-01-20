@@ -62,6 +62,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
             case 1:
                 // Funcion para mostrar horario del empleado aquí.
                 if((ComparacionHorario(planta)) == 1){
+                    LineasEnBlanco(); //Salto de linea para que se vea mas limpio.
                     Comparacion(puesto, planta, salario);
                 }else{
                     return;
