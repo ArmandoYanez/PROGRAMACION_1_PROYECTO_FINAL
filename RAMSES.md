@@ -4,7 +4,8 @@
 
 <span style="color:#d41089">ENCARGADO DE CREACION DE LOGIN</span>
 
-Día: 18/12/2023: creación de login 
+Día: 18/12/2023: creación de login
+Dia 18/01/2024: Creacion de las funciones de horarios.
 
 ```#include <iostream>
 #include <string>

@@ -7,14 +7,15 @@
 //Libreria para la creacion de empleados de guadalajara
 #include "EmpleadosGuadalajara.h"
 #include "FuncionesVerificacionesExtra.h"
+#include "Login.h"
 int main(){
 
     GenerarArchivo();
-    std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
+    Login();
+
     GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
     GerenteRecursosHumanos.CreacionEmpleado();
     GerenteRecursosHumanos.EditarDatos();
-
 
     return 0;
 }
