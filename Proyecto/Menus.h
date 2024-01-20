@@ -70,15 +70,21 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
                     return;
                 }
                 break;
+
             case 2:
-                // Funcion para mostrar salario del empleado aquí.
-                MostrarSalario(salario);
-                // Agrega la lógica para mostrar días de descanso aquí.
+                if((MostrarSalario(salario)) == 1){
+                    LineasEnBlanco(); //Salto de linea para que se vea mas limpio.
+                    Comparacion(puesto, planta, salario);
+                }else{
+                    return;
+                }
                 break;
+
             case 3:
                 std::cout << "SESION CERRADA" << std::endl;
                 return;
                 break;
+
             default:
                 std::cout << "OPCION NO VALIDA" << std::endl;
                 break;

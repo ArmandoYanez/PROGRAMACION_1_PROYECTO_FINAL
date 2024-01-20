@@ -11,6 +11,7 @@
 int main(){
 
     GenerarArchivo();
+    VerificarArchivoVacio();
     Login();
 
     GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;

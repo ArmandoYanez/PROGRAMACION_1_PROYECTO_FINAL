@@ -405,28 +405,27 @@ public:
                 campos.push_back(campo);
             }
 
-            // Comprobación si el nombre de usuario está en la columna correspondiente (por ejemplo, en la posición 1)
-            if (campos.size() > 1 && campos[10] == Usuario) {
-                std::cout << "El usuario se encuentra en la linea: " << linea << std::endl;
+            // Comprobación si el nombre de usuario está en la columna correspondiente (por ejemplo, en la posición 10)
+            if (campos.size() > 10 && campos[10] == Usuario) {
+                std::cout << "El usuario eliminado correctamente." << std::endl;
                 continue;  // Salta esta línea, no la agregues al vector lineasArchivo
             } else {
                 lineasArchivo.push_back(linea);
             }
-
-            archivoEntrada.close();
-
-            // Ahora, escribe las líneas modificadas de nuevo al archivo
-            std::ofstream archivoSalida(nombreArchivo);
-            if (!archivoSalida) {
-                std::cout << "No se pudo abrir el archivo de salida: " << nombreArchivo << std::endl;
-                return;
-            }
-
-            for (const auto &linea: lineasArchivo) {
-                archivoSalida << linea << std::endl;
-            }
-            archivoSalida.close();
         }
+        archivoEntrada.close();
+
+        // Ahora, escribe las líneas restantes de nuevo al archivo
+        std::ofstream archivoSalida(nombreArchivo);
+        if (!archivoSalida) {
+            std::cout << "No se pudo abrir el archivo de salida: " << nombreArchivo << std::endl;
+            return;
+        }
+
+        for (const auto& linea : lineasArchivo) {
+            archivoSalida << linea << std::endl;
+        }
+        archivoSalida.close();
     }
 
 private:
