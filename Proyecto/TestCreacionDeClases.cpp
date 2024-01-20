@@ -12,7 +12,7 @@ int main(){
 
     GenerarArchivo();
     Login();
-    std::vector<EmpleadoGDL<std::string ,int>> EmpleadosGDL;
+
     GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
     GerenteRecursosHumanos.CreacionEmpleado();
     GerenteRecursosHumanos.EditarDatos();

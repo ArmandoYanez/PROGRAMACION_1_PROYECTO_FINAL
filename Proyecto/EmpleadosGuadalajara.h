@@ -270,7 +270,7 @@ public:
         SetMes();
         SetAnio();
         SetDireccion();
-        SetSucursalGerente(SucursalRegistro);
+        SetSucursal();
         SetRFC();
         SetNumeroDeCuenta();
         SetNumeroDeSeguroSocial();

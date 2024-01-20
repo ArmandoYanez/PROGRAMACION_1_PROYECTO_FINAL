@@ -7,8 +7,10 @@
 #include <sstream>
 #include "FuncionesParaEmpleados.h"
 
+#include <cstdlib>  // Necesario para system()
+
 //Funcion para comprar el puesto de los empleados.
-void Comparacion(std::string puesto, std::string planta) {
+void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
     int Eleccion;
     GerenteRecursosHumanos<std::string ,int> GerenteRecursosHumanos;
@@ -21,6 +23,7 @@ void Comparacion(std::string puesto, std::string planta) {
         std::cout << "3. EDITAR USUARIO" << std::endl;
         std::cout << "4. SALIR" << std::endl;
         std::cin >> Eleccion;
+        LineasEnBlanco();
 
         switch (Eleccion) {
             case 1:
@@ -53,15 +56,20 @@ void Comparacion(std::string puesto, std::string planta) {
         std::cout << "2. SALARIO DEL EMPLEADO " << std::endl;
         std::cout << "3. SALIR" << std::endl;
         std::cin >> Eleccion;
+        LineasEnBlanco();
 
         switch (Eleccion) {
             case 1:
-                std::cout << "1. HORARIO DEL EMPLEADO" << std::endl;
-                // Agrega la lógica para mostrar horario del empleado aquí.
-                ComparacionHorario(planta);
+                // Funcion para mostrar horario del empleado aquí.
+                if((ComparacionHorario(planta)) == 1){
+                    Comparacion(puesto, planta, salario);
+                }else{
+                    return;
+                }
                 break;
             case 2:
-                std::cout << "2. DIAS DE DESCANSO " << std::endl;
+                // Funcion para mostrar salario del empleado aquí.
+                MostrarSalario(salario);
                 // Agrega la lógica para mostrar días de descanso aquí.
                 break;
             case 3:
@@ -82,6 +90,7 @@ void Comparacion(std::string puesto, std::string planta) {
         std::cout << "3. modificar el salario del empleado" << std::endl;
         std::cout <<"4. SALIR" << std::endl;
         std::cin >> Eleccion;
+        LineasEnBlanco();
 
         switch (Eleccion) {
             case 1:

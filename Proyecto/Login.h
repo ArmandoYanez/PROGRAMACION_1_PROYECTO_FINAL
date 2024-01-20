@@ -24,6 +24,7 @@ void Login() {
     std::cin >> Usuario;
     std::cout << "CONTRASENA:";
     std::cin >> Contrasena;
+    LineasEnBlanco();
 
     std::string nombreArchivo = "BaseDeDatos.csv";
     std::ifstream archivoEntrada(nombreArchivo);
@@ -43,9 +44,10 @@ void Login() {
             campos.push_back(campo);
         }
 
-        // Comprobación si el nombre de usuario y contraseña coinciden
+        // Comprobación si el nombre de usuario y contraseña coinciden.
         if (campos.size() > 1 && campos[10] == Usuario && campos[11] == Contrasena) {
-            Comparacion(campos[4], campos[12]);
+            Comparacion(campos[4], campos[12], campos[9]);
+            LineasEnBlanco();
             Login();
             encontrado = true;
             break;
