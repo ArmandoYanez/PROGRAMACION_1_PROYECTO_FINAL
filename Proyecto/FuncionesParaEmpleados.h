@@ -6,6 +6,8 @@
 #define PROYECTO_FUNCIONESPARAEMPLEADOS_H
 #include <iostream>
 #include <string>
+#include "EmpleadosGuadalajara.h"
+
 
 
 //Funcion para mostrar un horario predeterminado de Guadalajara.
@@ -42,6 +44,8 @@ void HorarioGTO(){
 }
 
 void MostrarSalario(std::string salario){
+    std::cout << "EL SALARIO DEL EMPLEADO ES: ";
+    std::cout << salario;
 
 }
 
