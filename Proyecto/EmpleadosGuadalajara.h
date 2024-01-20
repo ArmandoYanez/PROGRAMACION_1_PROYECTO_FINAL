@@ -381,6 +381,59 @@ public:
         archivoSalida.close();
     }
 
+    void BorrarEmpleado (){
+        // Se crea cadena para guardar el nombre que el usuario quiera borrar.
+        std::string Usuario;
+        std::cout << "INGRESE EL USUARIO DEL EMPLEADO A BORRAR:" << std::endl;
+        std::cin >> Usuario;
+
+        std::string nombreArchivo = "BaseDeDatos.csv";
+        std::ifstream archivoEntrada(nombreArchivo);
+        if (!archivoEntrada) {
+            std::cout << "No se pudo abrir el archivo: " << nombreArchivo << std::endl;
+            return;
+        }
+
+        std::vector<std::string> lineasArchivo;
+        std::string linea;
+        while (std::getline(archivoEntrada, linea)) {
+            std::stringstream ss(linea);
+            std::string campo;
+            std::vector<std::string> campos;
+
+            while (std::getline(ss, campo, ',')) {
+                campos.push_back(campo);
+            }
+
+            // Comprobación si el nombre de usuario está en la columna correspondiente (por ejemplo, en la posición 1)
+            if (campos.size() > 1 && campos[10] == Usuario) {
+                std::cout << "El usuario se encuentra en la linea: " << linea << std::endl;
+                continue;  // Salta esta línea, no la agregues al vector lineasArchivo
+            } else {
+                lineasArchivo.push_back(linea);
+            }
+
+            archivoEntrada.close();
+
+            // Ahora, escribe las líneas modificadas de nuevo al archivo
+            std::ofstream archivoSalida(nombreArchivo);
+            if (!archivoSalida) {
+                std::cout << "No se pudo abrir el archivo de salida: " << nombreArchivo << std::endl;
+                return;
+            }
+
+            for (const auto& linea : lineasArchivo) {
+                archivoSalida << linea << std::endl;
+            }
+            archivoSalida.close();
+        }
+
+
+
+
+
+    }
+
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;

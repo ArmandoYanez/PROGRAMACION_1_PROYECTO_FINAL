@@ -29,10 +29,12 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
             case 1:
                 // Agrega la lógica para crear usuario aquí.
                 GerenteRecursosHumanos.CreacionEmpleado();
+                LineasEnBlanco();
                 break;
             case 2:
-                std::cout << "2. ELIMINAR USUARIO" << std::endl;
                 // Agrega la lógica para eliminar usuario aquí.
+                GerenteRecursosHumanos.BorrarEmpleado();
+                LineasEnBlanco();
                 break;
             case 3:
                 std::cout << "3. EDITAR USUARIO" << std::endl;
