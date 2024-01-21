@@ -48,16 +48,6 @@ public:
         std::cin >> Planta;
     }
 
-    AgregarAInventario<T,T2> SetCrearProducto() {
-    AgregarAInventario<T,T2> retorno;
-
-    retorno.SetNombre();
-    retorno.SetCiudad();
-    retorno.SetCantidad();
-    retorno.SetPlanta();
-    return retorno;
-    }
-
     //Uso de get para retornar
     T2 getId() { return Id; }
     T2 getCantidad() { return Cantidad; }
@@ -68,7 +58,6 @@ public:
 private:
     T2 Id, Cantidad;
     T Planta, Nombre, Ciudad;
-    std::vector<AgregarAInventario<T, T2>> inventario;
 };
 
 

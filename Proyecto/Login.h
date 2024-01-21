@@ -64,7 +64,7 @@ void Login(std::vector<AgregarAInventario<std::string, int>> inventario) {
     archivoEntrada.close();
     // En el caso que el usuario o contraseña suean incorrectos
     if (!encontrado) {
-        std::cout << "Nombre de usuario o contraseña incorrectos. Inténtalo de nuevo." << std::endl;
+        std::cout << "NOMBRE DE USUARIO O CONTRASENA INCORRECTOS, INTENTALO NUEVAMENTE." << std::endl;
         Login(inventario);
     }
 

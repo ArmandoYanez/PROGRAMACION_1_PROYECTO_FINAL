@@ -115,7 +115,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario,  s
                 break;
         }
     }
-
+    //Menu para gerente de almacen.
     else if (puesto == "GERENTE ALMACEN") {
         std::cout << "BIENVENIDO GERENTE DE ALMACEN, QUE DESEA HACER?" << std::endl;
         std::cout << "1. AGREGAR PRODUCTO" << std::endl; //Hacer un vector que agrege la info de el objeto producto.
