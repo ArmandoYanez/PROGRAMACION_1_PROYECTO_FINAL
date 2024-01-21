@@ -99,11 +99,21 @@ public:
 
     //Setter para ingresar el cargo del empleado.
     void SetCargo(){
-        std::cout<<"INGRESE EL CARGO DEL EMPLEADO"<<std::endl;
-        std::getline(std::cin >> std::ws, Cargo); //Se utiliza getline para extraer toda la infromacion de la linea y ws para limpiar buffer.
-        if(!ContieneSoloLetras(Cargo)){
-            std::cout<<"ERROR AL INGRESAR EL CARGO"<<std::endl;
-            SetCargo(); //Usamos la recursividad para ingresar el cargo nuevamente.
+        int eleccion;
+        std::cout<<"INGRESE EL CARGO DEL EMPLEADO"<<std::endl<<"1- GERENTE ALMACEN"<<std::endl<<"2- EMPLEADO"<<std::endl;
+        std::cin>>eleccion;
+
+        switch (eleccion) {
+            case 1:
+                Cargo = "GERENTE ALMACEN";
+                break;
+            case 2:
+                Cargo = "EMPLEADO";
+                break;
+            default:
+                std::cout<<"PUESTO NO DISPONIBLE"<<std::endl;
+                SetCargo(); //Usamos la recursividad para ingresar el cargo nuevamente.
+                break;
         }
     }
 
@@ -292,7 +302,7 @@ public:
         SetMes();
         SetAnio();
         SetDireccion();
-        SetSucursal();
+        SetSucursalGerente(SucursalRegistro);
         SetRFC();
         SetNumeroDeCuenta();
         SetNumeroDeSeguroSocial();
@@ -304,7 +314,7 @@ public:
     }
 
     //Setter conjunto para creacion de empleado.
-    void SetCrearGerente(T SucursalRegistro){
+    void SetCrearGerente(){
         SetNombre();
         SetDia();
         SetMes();
@@ -352,13 +362,12 @@ public:
     }
 
     // Se creo el metodo de creacion para la creacion de empleados comunes sin acceso a la plataforma.
-    EmpleadoGDL<std::string, int> CreacionEmpleado() {
+    EmpleadoGDL<std::string, int> CreacionEmpleado(T suscursal) {
         EmpleadoGDL<std::string, int> EmpleadoNuevo;
         std::cout << "BIENVENIDO GERENTE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:" << std::endl;
 
         //Funcion para crear un nuevo usuario.
-        EmpleadoNuevo.SetCrear(
-                Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
+        EmpleadoNuevo.SetCrear(suscursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
         std::cout << "USUARIO REGISTRADO EXITOSAMENTE." << std::endl;
 
         return EmpleadoNuevo;
@@ -520,8 +529,7 @@ public:
         std::cout << "BIENVENIDO JEFE, PARA CREAR UN GERENTE COMPLETE LA SIGUIENTE INFORMACION:" << std::endl;
 
         //Funcion para crear un nuevo usuario.
-        EmpleadoNuevo.SetCrearGerente(
-                Sucursal); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
+        EmpleadoNuevo.SetCrearGerente(); //Se le agrega la sucursal del gerente ya que sera registrado en esa misma sucursal.
         std::cout << "GERENTE REGISTRADO EXITOSAMENTE." << std::endl;
 
         return EmpleadoNuevo;

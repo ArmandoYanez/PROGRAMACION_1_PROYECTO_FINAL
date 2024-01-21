@@ -13,8 +13,9 @@
 void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
     int Eleccion;
-    GerenteGeneral<std::string ,int> GerenteGeneral;
-    Jefe<std::string ,int> Jefe;
+    GerenteGeneral<std::string ,int> GerenteGeneral; //Objeto gerente general.
+    Jefe<std::string ,int> Jefe; //Objeto Jefe.
+
 
     //Funcion para gerentes generales.
     if (puesto == "GERENTE GENERAL") {
@@ -28,15 +29,24 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
         switch (Eleccion) {
             case 1:
-                // Agrega la lógica para crear usuario aquí.
-                GerenteGeneral.CreacionEmpleado();
+                // Opcion para crear un empleado siendo gerente.
+                GerenteGeneral.CreacionEmpleado(planta);
+                if(OpecionDeRetorno() == 1){
+                    Comparacion(puesto, planta, salario);
+                }
                 LineasEnBlanco();
                 break;
+
             case 2:
-                // Agrega la lógica para eliminar usuario aquí.
+                // Opcion para eliminar usuario siendo gerente.
                 GerenteGeneral.BorrarEmpleado();
                 LineasEnBlanco();
+                if(OpecionDeRetorno() == 1){
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
                 break;
+
             case 3:
                 std::cout << "3. EDITAR USUARIO" << std::endl;
                 // Agrega la lógica para editar usuario aquí.
@@ -63,7 +73,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
         switch (Eleccion) {
             case 1:
-                // Funcion para mostrar horario del empleado aquí.
+                // Funcion para mostrar horario del empleado + pregunta de volver a hacer algo.
                 if((ComparacionHorario(planta)) == 1){
                     LineasEnBlanco(); //Salto de linea para que se vea mas limpio.
                     Comparacion(puesto, planta, salario);
@@ -73,6 +83,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
                 break;
 
             case 2:
+                //Sistema para mostrar salario del empleado + pregunta de volver a hacer algo.
                 if((MostrarSalario(salario)) == 1){
                     LineasEnBlanco(); //Salto de linea para que se vea mas limpio.
                     Comparacion(puesto, planta, salario);
@@ -93,12 +104,11 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
     }
 
     else if (puesto == "GERENTE ALMACEN") {
-        std::cout << "bienvenido gerente de recursos humanos" << std::endl;
-        std::cout << "que decea hacer?" << std::endl;
-        std::cout << "1. cambiar de ubicación de empleado" << std::endl;
-        std::cout << "2. modificar el horario de un empleado" << std::endl;
-        std::cout << "3. modificar el salario del empleado" << std::endl;
-        std::cout <<"4. SALIR" << std::endl;
+        std::cout << "BIENVENIDO GERENTE DE ALMACEN, QUE DESEA HACER?" << std::endl;
+        std::cout << "1. AGREGAR PRODUCTO" << std::endl; //Hacer un vector que agrege la info de el objeto producto.
+        std::cout << "2. BORRAR PRODUCTO" << std::endl; //Buscar por id, y eleminar vector.
+        std::cout << "3. MOVER PRODUCTO" << std::endl; //Buscar y cambiar el dato de "ciudad o planta"
+        std::cout << "4. SALIR" << std::endl;
         std::cin >> Eleccion;
         LineasEnBlanco();
 

@@ -96,4 +96,17 @@ void LineasEnBlanco() {
     // Resto del código
 }
 
+bool OpecionDeRetorno(){
+    //Pregunta de cambio de flujo, seguir en la sesión o salir.
+    int Opcion;
+    std::cout<<"DESEA HACER OTRA OPERACION?"<<std::endl<<"1-Si"<<std::endl<<"2-No"<<std::endl;
+    std::cin>>Opcion;
+
+    if(Opcion == 1){
+        return 1;
+    } else{
+        return 0;
+    }
+}
+
 #endif //PROYECTO_FUNCIONESVERIFICACIONESEXTRA_H

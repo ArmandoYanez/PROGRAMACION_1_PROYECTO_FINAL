@@ -14,7 +14,6 @@ int main(){
     Login();
 
     GerenteGeneral<std::string ,int> GerenteRecursosHumanos;
-    GerenteRecursosHumanos.CreacionEmpleado();
     GerenteRecursosHumanos.EditarDatos();
 
     return 0;
