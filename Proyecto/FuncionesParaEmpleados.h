@@ -6,8 +6,7 @@
 #define PROYECTO_FUNCIONESPARAEMPLEADOS_H
 #include <iostream>
 #include <string>
-#include "EmpleadosGuadalajara.h"
-
+#include "ClaseEmpleados.h"
 
 
 //Funcion para mostrar un horario predeterminado de Guadalajara.

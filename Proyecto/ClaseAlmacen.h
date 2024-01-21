@@ -1,5 +1,5 @@
-#ifndef PROYECTO_ALMACEN_H
-#define PROYECTO_ALMACEN_H
+#ifndef PROYECTO_CLASEALMACEN_H
+#define PROYECTO_CLASEALMACEN_H
 
 #include <iostream>
 #include <string>
@@ -96,4 +96,4 @@ private:
 };
 
 
-#endif //PROYECTO_ALMACEN_H
+#endif //PROYECTO_CLASEALMACEN_H

@@ -2,8 +2,8 @@
 // Created by Asus ROG on 18/12/2023.
 //
 
-#ifndef PROYECTO_EMPLEADOSGUADALAJARA_H
-#define PROYECTO_EMPLEADOSGUADALAJARA_H
+#ifndef PROYECTO_CLASEEMPLEADOS_H
+#define PROYECTO_CLASEEMPLEADOS_H
 
 #include <iostream>
 #include <string>
@@ -105,7 +105,7 @@ public:
 
         switch (eleccion) {
             case 1:
-                Cargo = "GERENTE ALMACEN";
+                Cargo = "ENCARGADO ALMACEN";
                 break;
             case 2:
                 Cargo = "EMPLEADO";
@@ -331,7 +331,23 @@ public:
         CargarDatosBaseDeDatos();
     }
 
-
+    //Setter conjunto para creacion de empleado.
+    void SetCrearEmpleadoParaJefe(){
+        SetNombre();
+        SetDia();
+        SetMes();
+        SetAnio();
+        SetDireccion();
+        SetSucursal();
+        SetRFC();
+        SetNumeroDeCuenta();
+        SetNumeroDeSeguroSocial();
+        SetCargo();
+        SetSueldo();
+        SetUsuario();
+        SetContrasena();
+        CargarDatosBaseDeDatos();
+    }
 
 
 private:
@@ -398,21 +414,53 @@ public:
                 campos.push_back(campo);
             }
 
-            // Comprobación si el nombre de usuario está en la columna correspondiente (por ejemplo, en la posición 1)
-            if (campos.size() > 1 && campos[10] == Usuario) {
-                std::cout << "El usuario se encuentra en la linea: " << linea << std::endl;
-                // Realizar aquí las modificaciones en los datos según sea necesario
+            // Comprobación si el nombre de usuario está en la columna.
+            if (campos.size() > 10 && campos[10] == Usuario) {
+                int seleccion;
+                std::cout<<"QUE DESEAS EDITAR DEL USUARIO: "<<Usuario<<"."<<std::endl<<"1- EDITAR NOMBRE DE USUARIO."<<std::endl<<"2- EDITAR CONTRASENA."<<std::endl<<"3- EDITAR DIRECCION."
+                        <<std::endl<<"4- EDITAR NUMERO DE CUENTA."<<std::endl<<"5- EDITAR SUELDO."<<std::endl;
+                std::cin>>seleccion;
 
-                // Por ejemplo, puedes modificar el nombre del usuario en la línea actual:
-                // campos[1] = nuevoNombreUsuario;
+                // Realizar aquí las modificaciones en los datos según sea necesario.
+                switch (seleccion) {
+                    case 1:
+                        std::cout << "INGRESA EL NUEVO NOMBRE DE USUSARIO:" << std::endl;
+                        std::cin >> campos[10];
+                        break;
 
-                // Luego, reconstruye la línea con los campos modificados
+                    case 2:
+                        std::cout << "INGRESA LA NUEVA CONTRASENA DEL USUSARIO:" << std::endl;
+                        std::cin >> campos[11];
+                        break;
+
+                    case 3:
+                        std::cout << "INGRESA LA NUEVA DIRECCION DEL USUARIO:" << std::endl;
+                        std::cin >> campos[4];
+                        break;
+
+                    case 4:
+                        std::cout << "INGRESA EL NUEVO NUMERO DE CUENTA DEL USUARIO:" << std::endl;
+                        std::cin >> campos[7];
+                        break;
+
+                    case 5:
+                        std::cout << "INGRESA EL NUEVO NOMBRE DE SUELDO:" << std::endl;
+                        std::cin >> campos[9];
+                        break;
+
+                    default:
+                        std::cout << "OPCION NO DISPONIBLE" << std::endl;
+                        EditarDatos();
+                        break;
+                }
+
+                // Reconstruye la línea con los campos modificados.
                 std::stringstream nuevaLinea;
-                for (const auto &campo: campos) {
+                for (const auto &campo : campos) {
                     nuevaLinea << campo << ",";
                 }
                 std::string nuevaLineaStr = nuevaLinea.str();
-                nuevaLineaStr.pop_back(); // Eliminar la última coma
+                nuevaLineaStr.pop_back(); // Eliminar la última coma.
 
                 lineasArchivo.push_back(nuevaLineaStr);
             } else {
@@ -421,17 +469,19 @@ public:
         }
         archivoEntrada.close();
 
-        // Ahora, escribe las líneas modificadas de nuevo al archivo
+        // Ahora, escribe las líneas modificadas de nuevo al archivo.
         std::ofstream archivoSalida(nombreArchivo);
         if (!archivoSalida) {
             std::cout << "No se pudo abrir el archivo de salida: " << nombreArchivo << std::endl;
             return;
         }
 
-        for (const auto &linea: lineasArchivo) {
+        for (const auto &linea : lineasArchivo) {
             archivoSalida << linea << std::endl;
         }
         archivoSalida.close();
+
+        std::cout << "DATOS EDITADOS EXITOSAMENTE." << std::endl;
     }
 
     void BorrarEmpleado() {
@@ -535,6 +585,21 @@ public:
         return EmpleadoNuevo;
     }
 
+    // Se creo el metodo de creacion para la creacion de empleados comunes siendo el jefe.
+    EmpleadoGDL<std::string, int> CreacionEmpleadoJefe() {
+        EmpleadoGDL<std::string, int> EmpleadoNuevo;
+        std::cout << "BIENVENIDO JEFE, PARA CREAR UN EMPLEADO COMPLETE LA SIGUIENTE INFORMACION:" << std::endl;
+
+        //Funcion para crear un nuevo usuario.
+        EmpleadoNuevo.SetCrearEmpleadoParaJefe(); // Se usa metodo especial donde pide sucursal y no da puesto predeterminado.
+        std::cout << "USUARIO REGISTRADO EXITOSAMENTE." << std::endl;
+
+        return EmpleadoNuevo;
+    }
+
+
+
+
 private:
     T Nombre, EstadoDePago, Usuario, Contrasena;
     T2 Dia, Mes, Anio;
@@ -573,4 +638,4 @@ public:
 };
 
 
-#endif //PROYECTO_EMPLEADOSGUADALAJARA_H
+#endif //PROYECTO_CLASEEMPLEADOS_H

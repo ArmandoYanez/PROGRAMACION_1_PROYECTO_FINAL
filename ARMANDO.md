@@ -10,4 +10,5 @@ Dia 19/12/2023: Se creo la clase derivada del jefe, esta con un metodo para la c
 Dia 23/12/2023: Se creo la funcion para editar datos de un empleado.    
 Dia 06/01/2024: Se crearon nuevos metodos para gerentes.    
 Dia 07/01/2024: Se adapto el codigo para usar el archivo de texto.  
-Dia 17/01/2024: Se modifico el codigo realizado por rodrigo en el login para funcionar. 
+Dia 17/01/2024: Se modifico el codigo realizado por rodrigo en el login para funcionar.
+Dia 20/01/2024: Se actualizaron los metodos de jefe y gerente para que se lograran ejecutar todas las operaciones.

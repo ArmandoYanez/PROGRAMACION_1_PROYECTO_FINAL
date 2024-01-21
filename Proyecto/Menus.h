@@ -7,7 +7,6 @@
 #include <sstream>
 #include "FuncionesParaEmpleados.h"
 
-#include <cstdlib>  // Necesario para system()
 
 //Funcion para comprar el puesto de los empleados.
 void Comparacion(std::string puesto, std::string planta, std::string salario) {
@@ -32,6 +31,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
                 // Opcion para crear un empleado siendo gerente.
                 GerenteGeneral.CreacionEmpleado(planta);
                 if(OpecionDeRetorno() == 1){
+                    LineasEnBlanco(); //Funcion para saltar lineas.
                     Comparacion(puesto, planta, salario);
                 }
                 LineasEnBlanco();
@@ -40,23 +40,32 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
             case 2:
                 // Opcion para eliminar usuario siendo gerente.
                 GerenteGeneral.BorrarEmpleado();
-                LineasEnBlanco();
                 if(OpecionDeRetorno() == 1){
+                    LineasEnBlanco(); //Funcion para saltar lineas.
                     Comparacion(puesto, planta, salario);
                 }
                 LineasEnBlanco();
                 break;
 
             case 3:
-                std::cout << "3. EDITAR USUARIO" << std::endl;
-                // Agrega la lógica para editar usuario aquí.
+                // Opcion para eliminar usuario siendo gerente.
+                GerenteGeneral.EditarDatos();
+                if(OpecionDeRetorno() == 1){
+                    LineasEnBlanco(); //Funcion para saltar lineas.
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
                 break;
+
             case 4:
+                //Se cierra la sesion y vuelve al login.
                 std::cout << "SESION CERRADA" << std::endl;
                 return;
                 break;
+
             default:
                 std::cout << "OPCION NO VALIDA" << std::endl;
+                Comparacion(puesto, planta, salario);
                 break;
         }
     }
@@ -93,12 +102,14 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
                 break;
 
             case 3:
+                //Se cierra la sesion y vuelve al login.
                 std::cout << "SESION CERRADA" << std::endl;
                 return;
                 break;
 
             default:
                 std::cout << "OPCION NO VALIDA" << std::endl;
+                Comparacion(puesto, planta, salario);
                 break;
         }
     }
@@ -117,16 +128,26 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
                 std::cout << "1. cambiar de ubicación de empleado" << std::endl;
                 // Agrega la lógica para cambiar ubicación de empleado aquí.
                 break;
+
             case 2:
                 std::cout << "2. modificar el horario de un empleado" << std::endl;
                 // Agrega la lógica para modificar horario de un empleado aquí.
                 break;
+
             case 3:
-                std::cout << "3. modificar el salario del empleado" << std::endl;
-                // Agrega la lógica para modificar salario de un empleado aquí.
+                // Opcion para eliminar usuario siendo gerente.
+
                 break;
+
+            case 4:
+                //Se cierra la sesion y vuelve al login.
+                std::cout << "SESION CERRADA" << std::endl;
+                return;
+                break;
+
             default:
-                std::cout << "Opción no válida." << std::endl;
+                std::cout << "OPCION NO VALIDA" << std::endl;
+                Comparacion(puesto, planta, salario);
                 break;
         }
 }
@@ -142,27 +163,53 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
 
         switch (Eleccion) {
             case 1:
-                //Funcion para crear empleados.
+                //Funcion para crear gerente.
                 Jefe.CreacionGerente();
+                if(OpecionDeRetorno() == 1){
+                    LineasEnBlanco(); //Funcion para saltar lineas.
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
                 break;
 
             case 2:
-                std::cout << "2. modificar el horario de un empleado" << std::endl;
-                // Agrega la lógica para modificar horario de un empleado aquí.
+                //Funcion para crear empleado común sinedo jefe.
+                Jefe.CreacionEmpleadoJefe();
+                if(OpecionDeRetorno() == 1){
+                    LineasEnBlanco(); //Funcion para saltar lineas.
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
                 break;
 
             case 3:
-                std::cout << "3. modificar el salario del empleado" << std::endl;
-                // Agrega la lógica para modificar salario de un empleado aquí.
+                //Se utiliza la funcion del gerente para borrar datos.
+                GerenteGeneral.BorrarEmpleado();
+                if (OpecionDeRetorno() == 1) {
+                    LineasEnBlanco(); //Funcion para saltar lineas.
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
                 break;
 
             case 4:
-                std::cout << "3. modificar el salario del empleado" << std::endl;
-                // Agrega la lógica para modificar salario de un empleado aquí.
+                //Se utiliza la funcion del gerente para editar datos.
+                GerenteGeneral.EditarDatos();
+                if (OpecionDeRetorno() == 1) {
+                    LineasEnBlanco(); //Funcion para saltar lineas.
+                    Comparacion(puesto, planta, salario);
+                }
+                LineasEnBlanco();
+                break;
+
+            case 5:
+                //Se cierra la sesion y vuelve al login.
+                std::cout<<"SECION CERRADA"<<std::endl;
                 break;
 
             default:
-                std::cout << "Opción no válida." << std::endl;
+                std::cout << "OPCION NO VALIDA" << std::endl;
+                Comparacion(puesto, planta, salario);
                 break;
         }
     }
