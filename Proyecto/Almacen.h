@@ -56,6 +56,7 @@ public:
         }
     }
 
+    //Metodo para eliminar por ID
     void EliminarPorId(T id) {
         inventario.erase(
                 std::remove_if(inventario.begin(), inventario.end(),
@@ -65,6 +66,7 @@ public:
                 inventario.end());
     }
 
+    //Metodo para Modificar por ID
     void ModificarCiudadPlantaPorId(T id, T2 nuevaCiudad, T2 nuevaPlanta) {
         auto it = std::find_if(inventario.begin(), inventario.end(),
                                [id](const AgregarAInventario<T, T2>& elemento) {
