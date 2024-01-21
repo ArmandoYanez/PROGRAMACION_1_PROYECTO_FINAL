@@ -44,7 +44,7 @@ public:
     }
 
     void SetPlanta() {
-        std::cout << "¿En qué planta desea agregarlos?" << std::endl;
+        std::cout << "¿En qué planta desea agregarlos?(GDL, CDMX, GTO)" << std::endl;
         std::cin >> Planta;
     }
 
