@@ -4,8 +4,10 @@
 #include "Login.h" //Libreria para la ejecuccion del login.
 
 int main(){
+    std::vector<AgregarAInventario<std::string, int>> inventario;//Vector para guardar productos.
+
     GenerarArchivo();
-    Login();
+    Login(inventario);
 
     return 0;
 }

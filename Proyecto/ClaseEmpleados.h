@@ -610,7 +610,10 @@ private:
     float Sueldo;
 };
 
+
 template<typename T, typename T2>
+//Clase Gerente Almacen.
+
 class GerenteAlmacen : public EmpleadoGDL<std::string, int> {
 public:
     //Constructor implicito
@@ -625,10 +628,6 @@ public:
                                           NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
     }
 
-    void AgregaraAlmacen () {
-
-    }
-
     AgregarAInventario<T,T2> SetCrearProducto() {
         AgregarAInventario<T,T2> retorno;
 
@@ -639,14 +638,15 @@ public:
         return retorno;
     }
 
-    void BorrardeAlmacen () {
-
+    void Mostrar(std::vector<AgregarAInventario<T, T2>> inventarioFuncion) {
+        for (size_t i = 0; i < inventarioFuncion.size(); ++i) {
+            std::cout << "PRODUCTO NUMERO " << i + 1 << std::endl;  // Incrementa el número de producto
+            std::cout << "NOMBRE: " << inventarioFuncion[i].getNombre() << std::endl;
+            std::cout << "CIUDAD: " << inventarioFuncion[i].getCiudad() << std::endl;
+            std::cout << "PLANTA: " << inventarioFuncion[i].getPlanta() << std::endl;
+            std::cout << "CANTIDAD: " << inventarioFuncion[i].getCantidad() << std::endl << std::endl;
+        }
     }
-
-    void ModificarProducto () {
-
-    }
-
 };
 
 

@@ -18,7 +18,8 @@
 #include "FuncionesVerificacionesExtra.h"
 
 //Funcion principal login.
-void Login() {
+void Login(std::vector<AgregarAInventario<std::string, int>> inventario) {
+
     //Verificamos si el archivo esta vacio.
     if(VerificarArchivoVacio()){
         Jefe<std::string ,int> Jefe;
@@ -53,9 +54,9 @@ void Login() {
 
         // Comprobación si el nombre de usuario y contraseña coinciden.
         if (campos.size() > 1 && campos[10] == Usuario && campos[11] == Contrasena) {
-            Comparacion(campos[4], campos[12], campos[9]);
+            Comparacion(campos[4], campos[12], campos[9],inventario);
             LineasEnBlanco();
-            Login();
+            Login(inventario);
             encontrado = true;
             break;
         }
@@ -64,7 +65,7 @@ void Login() {
 
     if (!encontrado) {
         std::cout << "Nombre de usuario o contraseña incorrectos. Inténtalo de nuevo." << std::endl;
-        Login();
+        Login(inventario);
     }
 
 }
