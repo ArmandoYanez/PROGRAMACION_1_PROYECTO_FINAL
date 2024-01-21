@@ -27,22 +27,22 @@ public:
         this -> Ciudad = Ciudad;
     }
 
-    //Uso de set para agregar
+    //Uso de set para nombre
     void SetNombre() {
         std::cout << "PRODUCTA A AGREGAR AL INVENTARIO: ";
         std::cin >> Nombre;
     }
-
+    //Uso de set para ciudad
     void SetCiudad() {
         std::cout << "CIUDAD: ";
         std::cin >> Ciudad;
     }
-
+    //Uso de set para cantidad
     void SetCantidad() {
         std::cout << "CANTIDAD DE " << Nombre << ": ";
         std::cin >> Cantidad;
     }
-
+    //Uso de set para planta
     void SetPlanta() {
         std::cout << "PLANTA(GDL, CDMX, GTO): ";
         std::cin >> Planta;

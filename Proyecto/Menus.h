@@ -157,6 +157,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario,  s
                 break;
         }
 }
+        //En caso de que sea Jefe.
     else if (puesto == "JEFE") {
         std::cout << "BIENVENIDO JEFE, QUE DESEA HACER?" << std::endl;
         std::cout << "1. CREAR GERENTE" << std::endl;
