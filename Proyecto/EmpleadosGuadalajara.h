@@ -490,7 +490,7 @@ private:
 };
 
 template<typename T, typename T2>
-//Creacion de la calse jefe
+//Creacion de la clase jefe
 class Jefe : public EmpleadoGDL<std::string, int> {
 public:
     // Constructor implicito
@@ -542,5 +542,35 @@ private:
     T2 NumeroDeSeguroSocial;
     float Sueldo;
 };
+
+template<typename T, typename T2>
+class GerenteAlmacen : public EmpleadoGDL<std::string, int> {
+public:
+    //Constructor implicito
+    GerenteAlmacen() : EmpleadoGDL<std::string, int>() {
+
+    }
+    //Constructor explicito
+    GerenteAlmacen(T Nombre, T2 Dia, T2 Mes, T2 Anio, T Cargo, T Direccion, T RFC, T2 NumeroDeCuenta,
+                   T2 NumeroDeSeguroSocial,
+                   float Sueldo, T EstadoDePago, T Sucursal) :
+            EmpleadoGDL<std::string, int>(Nombre, Dia, Mes, Anio, Cargo, Direccion, RFC, NumeroDeCuenta,
+                                          NumeroDeSeguroSocial, Sueldo, EstadoDePago, Sucursal) {
+    }
+
+    void AgregaraAlmacen () {
+
+    }
+
+    void BorrardeAlmacen () {
+
+    }
+
+    void ModificarProducto () {
+
+    }
+
+};
+
 
 #endif //PROYECTO_EMPLEADOSGUADALAJARA_H

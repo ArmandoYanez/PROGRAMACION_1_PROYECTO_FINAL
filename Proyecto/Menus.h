@@ -15,7 +15,7 @@ void Comparacion(std::string puesto, std::string planta, std::string salario) {
     int Eleccion;
     GerenteGeneral<std::string ,int> GerenteGeneral; //Objeto gerente general.
     Jefe<std::string ,int> Jefe; //Objeto Jefe.
-
+    GerenteAlmacen<std::string, int> GerenteAlmacen;
 
     //Funcion para gerentes generales.
     if (puesto == "GERENTE GENERAL") {

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include <sstream>
 
@@ -14,18 +15,20 @@ class Inventario{
 public:
     //Constructor Implicito
     Inventario(){
-        this -> id = (X("N/A"));
-        this -> cantidad = (X("N/A"));
-        this -> planta = (X2("N/A"));
-        this -> nombre = (X2("N/A"));
+        this -> Id = (X("N/A"));
+        this -> Cantidad = (X("N/A"));
+        this -> Planta = (X2("N/A"));
+        this -> Nombre = (X2("N/A"));
+        this -> Ciudad = (X2("N/A"));
     }
 
     //Constructor Explicito
-    Inventario(X Id, X Cantidad, X2 Planta, X2 Nombre){
+    Inventario(X Id, X Cantidad, X2 Planta, X2 Nombre, X2 Ciudad){
         this -> Id = Id;
         this -> Cantidad = Cantidad;
         this -> Planta = Planta;
         this -> Nombre = Nombre;
+        this -> Ciudad = Ciudad;
     }
 
     //Uso de set para poder agregar al inventario
@@ -33,6 +36,11 @@ public:
         std::cout << "QUE DESEA AGREGAR AL INVENTARIO?" << std::endl;
 
         std::cin >> Nombre;
+    }
+    void SetCiudad (){
+        std::cout << "EN QUE CIUDAD DESEA AGREGAR EL PRODUCTO" << std::endl;
+
+        std::cin >> Ciudad;
     }
     void SetCantidad (){
         std::cout << "QUE CANTIDAD DE " << Nombre << " DESEA AGREGAR" << std::endl;
@@ -47,6 +55,7 @@ public:
     void SetId (){
         std::cout << "EL ID DEL PRODUCTO/S ES " << Id << std::endl;
         for (X i = 0 ; i = Cantidad ; ++i) {
+            i = Id;
             std::cout << "EL ID DE SU PRODUCTO ES " << Id << std::endl;
         }
     }
@@ -64,11 +73,14 @@ public:
     X2 getNombre(){
         return this -> Nombre;
     }
+    X2 getCiudad(){
+        return this -> Ciudad;
+    }
 
 
 private:
     X Id, Cantidad;
-    X2 Planta, Nombre;
+    X2 Planta, Nombre, Ciudad;
 };
 
 #endif //PROYECTO_ALMACEN_H
