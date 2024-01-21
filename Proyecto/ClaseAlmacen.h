@@ -11,8 +11,8 @@ class AgregarAInventario {
 public:
 //Constructor Implicito
     AgregarAInventario(){
-        this -> Id = (T2("N/A"));
-        this -> Cantidad = (T2("N/A"));
+        this -> Id = (T2(0));
+        this -> Cantidad = (T2(0));
         this -> Planta = (T("N/A"));
         this -> Nombre = (T("N/A"));
         this -> Ciudad = (T("N/A"));
