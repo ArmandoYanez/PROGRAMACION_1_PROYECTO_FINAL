@@ -4,26 +4,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
-#include <sstream>
-
-//Template para poder usarlo en la clase
-template <typename X,typename X2>
-
-//Creacion de la clase para tener un inventario
-class Inventario{
+template <typename T, typename T2>
+class AgregarAInventario {
 public:
-    //Constructor Implicito
-    Inventario(){
-        this -> Id = (X("N/A"));
-        this -> Cantidad = (X("N/A"));
-        this -> Planta = (X2("N/A"));
-        this -> Nombre = (X2("N/A"));
-        this -> Ciudad = (X2("N/A"));
+//Constructor Implicito
+    AgregarAInventario(){
+        this -> Id = (T("N/A"));
+        this -> Cantidad = (T("N/A"));
+        this -> Planta = (T2("N/A"));
+        this -> Nombre = (T2("N/A"));
+        this -> Ciudad = (T2("N/A"));
     }
 
-    //Constructor Explicito
-    Inventario(X Id, X Cantidad, X2 Planta, X2 Nombre, X2 Ciudad){
+//Constructor Explicito
+    AgregarAInventario(T Id, T Cantidad, T2 Planta, T2 Nombre, T2 Ciudad){
         this -> Id = Id;
         this -> Cantidad = Cantidad;
         this -> Planta = Planta;
@@ -31,56 +27,71 @@ public:
         this -> Ciudad = Ciudad;
     }
 
-    //Uso de set para poder agregar al inventario
-    void SetNombre (){
-        std::cout << "QUE DESEA AGREGAR AL INVENTARIO?" << std::endl;
-
+    //Uso de set para agregar
+    void SetNombre() {
+        std::cout << "¿Qué desea agregar al inventario?" << std::endl;
         std::cin >> Nombre;
     }
-    void SetCiudad (){
-        std::cout << "EN QUE CIUDAD DESEA AGREGAR EL PRODUCTO" << std::endl;
 
+    void SetCiudad() {
+        std::cout << "¿En qué ciudad desea agregar el producto?" << std::endl;
         std::cin >> Ciudad;
     }
-    void SetCantidad (){
-        std::cout << "QUE CANTIDAD DE " << Nombre << " DESEA AGREGAR" << std::endl;
 
+    void SetCantidad() {
+        std::cout << "¿Qué cantidad de " << Nombre << " desea agregar?" << std::endl;
         std::cin >> Cantidad;
     }
-    void SetPlanta (){
-        std::cout << "EN QUE PLANTA DESEA AGREGARLOS" << std::endl;
 
+    void SetPlanta() {
+        std::cout << "¿En qué planta desea agregarlos?" << std::endl;
         std::cin >> Planta;
     }
-    void SetId (){
-        std::cout << "EL ID DEL PRODUCTO/S ES " << Id << std::endl;
-        for (X i = 0 ; i = Cantidad ; ++i) {
+
+    void SetId() {
+        std::cout << "El ID del producto es " << Id << std::endl;
+        for (T i = 0; i < Cantidad; ++i) {
             i = Id;
-            std::cout << "EL ID DE SU PRODUCTO ES " << Id << std::endl;
+            std::cout << "El ID de su producto es " << Id << std::endl;
         }
     }
 
-    //Uso de get para poder rellenar el inventario
-    X getId(){
-        return this -> Id;
-    }
-    X getCantidad(){
-        return this -> Cantidad;
-    }
-    X2 getPlanta(){
-        return this -> Planta;
-    }
-    X2 getNombre(){
-        return this -> Nombre;
-    }
-    X2 getCiudad(){
-        return this -> Ciudad;
+    void EliminarPorId(T id) {
+        inventario.erase(
+                std::remove_if(inventario.begin(), inventario.end(),
+                               [id](const AgregarAInventario<T, T2>& elemento) {
+                                   return elemento.getId() == id;
+                               }),
+                inventario.end());
     }
 
+    void ModificarCiudadPlantaPorId(T id, T2 nuevaCiudad, T2 nuevaPlanta) {
+        auto it = std::find_if(inventario.begin(), inventario.end(),
+                               [id](const AgregarAInventario<T, T2>& elemento) {
+                                   return elemento.getId() == id;
+                               });
+
+        if (it != inventario.end()) {
+            // Se encontró el elemento con el ID, ahora se modifican ciudad y planta
+            it->Ciudad = nuevaCiudad;
+            it->Planta = nuevaPlanta;
+        } else {
+            std::cout << "Elemento con ID " << id << " no encontrado." << std::endl;
+        }
+    }
+
+    //Uso de get para retornar
+    T getId() { return Id; }
+    T getCantidad() { return Cantidad; }
+    T2 getPlanta() { return Planta; }
+    T2 getNombre() { return Nombre; }
+    T2 getCiudad() { return Ciudad; }
 
 private:
-    X Id, Cantidad;
-    X2 Planta, Nombre, Ciudad;
+    T Id, Cantidad;
+    T2 Planta, Nombre, Ciudad;
+    std::vector<AgregarAInventario<T, T2>> inventario;
 };
+
 
 #endif //PROYECTO_ALMACEN_H
