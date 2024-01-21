@@ -48,6 +48,16 @@ public:
         std::cin >> Planta;
     }
 
+    AgregarAInventario<T,T2> SetCrearProducto() {
+    AgregarAInventario<T,T2> retorno;
+
+    retorno.SetNombre();
+    retorno.SetCiudad();
+    retorno.SetCantidad();
+    retorno.SetPlanta();
+    return retorno;
+    }
+
     void SetId() {
         std::cout << "El ID del producto es " << Id << std::endl;
         for (T i = 0; i < Cantidad; ++i) {

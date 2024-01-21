@@ -13,6 +13,8 @@
 //Libreria con funciones extra de verificacion y otras funciones extra.
 #include "FuncionesVerificacionesExtra.h"
 
+#include "ClaseAlmacen.h"
+
 //Creacion de 2 templates para su uso dentro de la clase.
 template <typename T, typename T2>
 
@@ -625,6 +627,16 @@ public:
 
     void AgregaraAlmacen () {
 
+    }
+
+    AgregarAInventario<T,T2> SetCrearProducto() {
+        AgregarAInventario<T,T2> retorno;
+
+        retorno.SetNombre();
+        retorno.SetCiudad();
+        retorno.SetCantidad();
+        retorno.SetPlanta();
+        return retorno;
     }
 
     void BorrardeAlmacen () {
